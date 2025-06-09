@@ -1,0 +1,12 @@
+__default__:
+  account: "scjp1"
+  mem: "4G"
+  ntasks: "1"
+  cpus: "1"
+  name: "JOBNAME.{rule}.{wildcards}"
+  output: "../run_snakemake/logs/smk.motif_meme.{rule}/{wildcards}.out"
+  time: "48:00:00"
+
+sea_peaks:
+  mem: "64G"
+

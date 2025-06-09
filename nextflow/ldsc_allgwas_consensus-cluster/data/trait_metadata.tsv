@@ -1,0 +1,407 @@
+trait	description	traitname	variable_type	source
+COVID19_A2_eur	COVID19_A2_eur	COVID19 (very severe)	cc	other
+COVID19_B2_eur	COVID19_B2_eur	COVID19 (hospitalization)	cc	other
+COVID19_C2_eur	COVID19_C2_eur	COVID19 infection	cc	other
+MAGIC2023_IFCadjbmi	MAGIC2023_IFCadjbmi	Insulin fold change (MAGIC)	continuous_irnt	other
+MAGIC2023_ISIadjbmi	MAGIC2023_ISIadjbmi	Stumvoll insulin sensitivity index (MAGIC)	continuous_irnt	other
+MAGIC_2hGlu-EUR	MAGIC_2hGlu-EUR	2hr Glucose (MAGIC)	continuous_irnt	other
+MAGIC_FG-EUR	MAGIC_FG-EUR	Fasting Glucose (MAGIC)	continuous_irnt	other
+MAGIC_FI-EUR	MAGIC_FI-EUR	Fasting Insulin (MAGIC)	continuous_irnt	other
+MAGIC_HbA1c-EUR	MAGIC_HbA1c-EUR	HbA1c (MAGIC)	continuous_irnt	other
+cardio-ukbb_CAD	cardio-ukbb_CAD	Coronary artery disease	cc	other
+childhood-bmi_1.5years	childhood-bmi_1.5years	childhood-bmi_1.5years	continuous_irnt	other
+childhood-bmi_1year	childhood-bmi_1year	childhood-bmi_1year	continuous_irnt	other
+childhood-bmi_2years	childhood-bmi_2years	childhood-bmi_2years	continuous_irnt	other
+childhood-bmi_3months	childhood-bmi_3months	childhood-bmi_3months	continuous_irnt	other
+childhood-bmi_3years	childhood-bmi_3years	childhood-bmi_3years	continuous_irnt	other
+childhood-bmi_5years	childhood-bmi_5years	childhood-bmi_5years	continuous_irnt	other
+childhood-bmi_6months	childhood-bmi_6months	childhood-bmi_6months	continuous_irnt	other
+childhood-bmi_6weeks	childhood-bmi_6weeks	childhood-bmi_6weeks	continuous_irnt	other
+childhood-bmi_7years	childhood-bmi_7years	childhood-bmi_7years	continuous_irnt	other
+childhood-bmi_8months	childhood-bmi_8months	childhood-bmi_8months	continuous_irnt	other
+childhood-bmi_8years	childhood-bmi_8years	childhood-bmi_8years	continuous_irnt	other
+childhood-bmi_birth	childhood-bmi_birth	childhood-bmi_birth	continuous_irnt	other
+diamante_T2D-European	diamante_T2D-European	Type 2 diabetes (DIAMANTE)	continuous_irnt	other
+diamante_T2Dbmiadj-European	diamante_T2Dbmiadj-European	Type 2 diabetes BMI-adj (DIAMANTE)	continuous_irnt	other
+exercise_leisure-screen-time	exercise_leisure-screen-time	Leisure screen time	continuous_irnt	other
+exercise_pa-leisure-screen-time	exercise_pa-leisure-screen-time	Physical activity during leisure screen time	continuous_irnt	other
+exercise_sedantry-commute	exercise_sedantry-commute	sedantry commuting	continuous_irnt	other
+exercise_sedantry-work	exercise_sedantry-work	sedantry behavior at work	continuous_irnt	other
+giant-ukbb_BMI	giant-ukbb_BMI	BMI	continuous_irnt	other
+giant-ukbb_WHRadjbmi	giant-ukbb_WHRadjbmi	Waist-hip ratio BMI-adj	continuous_irnt	other
+nielsen_atrial-fibrillation	nielsen_atrial-fibrillation	Atrial Fibrillation	cc	other
+ukbb_creatinine	ukbb_creatinine	Creatinine	continuous_irnt	other
+102_irnt	Pulse rate, automated reading	Pulse rate, automated reading (102_irnt)	continuous_irnt	ukbb
+1050	Time spend outdoors in summer	Time spend outdoors in summer (1050)	ordinal	ukbb
+1060	Time spent outdoors in winter	Time spent outdoors in winter (1060)	ordinal	ukbb
+1070	Time spent watching television (TV)	Time spent watching television (TV) (1070)	ordinal	ukbb
+1080	Time spent using computer	Time spent using computer (1080)	ordinal	ukbb
+1090	Time spent driving	Time spent driving (1090)	ordinal	ukbb
+1100	Drive faster than motorway speed limit	Drive faster than motorway speed limit (1100)	ordinal	ukbb
+110001	Invitation to complete online 24-hour recall dietary questionnaire, acceptance	Invitation to complete online 24-hour recall dietary questionnaire, acceptance (110001)	binary	ukbb
+1160	Sleep duration	Sleep duration (1160)	ordinal	ukbb
+1170	Getting up in morning	Getting up in morning (1170)	ordinal	ukbb
+1180	Morning/evening person (chronotype)	Morning/evening person (chronotype) (1180)	ordinal	ukbb
+1190	Nap during day	Nap during day (1190)	ordinal	ukbb
+1200	Sleeplessness / insomnia	Sleeplessness / insomnia (1200)	ordinal	ukbb
+1210	Snoring	Snoring (1210)	binary	ukbb
+1220	Daytime dozing / sleeping (narcolepsy)	Daytime dozing / sleeping (narcolepsy) (1220)	ordinal	ukbb
+1239	Current tobacco smoking	Current tobacco smoking (1239)	ordinal	ukbb
+1249	Past tobacco smoking	Past tobacco smoking (1249)	ordinal	ukbb
+1279	Exposure to tobacco smoke outside home	Exposure to tobacco smoke outside home (1279)	ordinal	ukbb
+1289	Cooked vegetable intake	Cooked vegetable intake (1289)	ordinal	ukbb
+1299	Salad / raw vegetable intake	Salad / raw vegetable intake (1299)	ordinal	ukbb
+1309	Fresh fruit intake	Fresh fruit intake (1309)	ordinal	ukbb
+1319	Dried fruit intake	Dried fruit intake (1319)	ordinal	ukbb
+135	Number of self-reported non-cancer illnesses	Number of self-reported non-cancer illnesses (135)	ordinal	ukbb
+136	Number of operations, self-reported	Number of operations, self-reported (136)	ordinal	ukbb
+137	Number of treatments/medications taken	Number of treatments/medications taken (137)	ordinal	ukbb
+1418_2	Milk type used: Semi-skimmed	Milk type used: Semi-skimmed (1418_2)	binary	ukbb
+1418_3	Milk type used: Skimmed	Milk type used: Skimmed (1418_3)	binary	ukbb
+1428_0	Spread type: Never/rarely use spread	Spread type: Never/rarely use spread (1428_0)	binary	ukbb
+1428_1	Spread type: Butter/spreadable butter	Spread type: Butter/spreadable butter (1428_1)	binary	ukbb
+1428_3	Spread type: Other type of spread/margarine	Spread type: Other type of spread/margarine (1428_3)	binary	ukbb
+1438_irnt	Bread intake	Bread intake (1438_irnt)	continuous_irnt	ukbb
+1448_1	Bread type: White	Bread type: White (1448_1)	binary	ukbb
+1448_3	Bread type: Wholemeal or wholegrain	Bread type: Wholemeal or wholegrain (1448_3)	binary	ukbb
+1458	Cereal intake	Cereal intake (1458)	ordinal	ukbb
+1468_4	Cereal type: Muesli	Cereal type: Muesli (1468_4)	binary	ukbb
+1468_5	Cereal type: Other (e.g. Cornflakes, Frosties)	Cereal type: Other (e.g. Cornflakes, Frosties) (1468_5)	binary	ukbb
+1478	Salt added to food	Salt added to food (1478)	ordinal	ukbb
+1488_irnt	Tea intake	Tea intake (1488_irnt)	continuous_irnt	ukbb
+1498	Coffee intake	Coffee intake (1498)	ordinal	ukbb
+1508_2	Coffee type: Instant coffee	Coffee type: Instant coffee (1508_2)	binary	ukbb
+1508_3	Coffee type: Ground coffee (include espresso, filter etc)	Coffee type: Ground coffee (include espresso, filter etc) (1508_3)	binary	ukbb
+1518	Hot drink temperature	Hot drink temperature (1518)	ordinal	ukbb
+1528	Water intake	Water intake (1528)	ordinal	ukbb
+1538_0	Major dietary changes in the last 5 years: No	Major dietary changes in the last 5 years: No (1538_0)	binary	ukbb
+1538_1	Major dietary changes in the last 5 years: Yes, because of illness	Major dietary changes in the last 5 years: Yes, because of illness (1538_1)	binary	ukbb
+1538_2	Major dietary changes in the last 5 years: Yes, because of other reasons	Major dietary changes in the last 5 years: Yes, because of other reasons (1538_2)	binary	ukbb
+1548	Variation in diet	Variation in diet (1548)	ordinal	ukbb
+1568	Average weekly red wine intake	Average weekly red wine intake (1568)	ordinal	ukbb
+1578	Average weekly champagne plus white wine intake	Average weekly champagne plus white wine intake (1578)	ordinal	ukbb
+1588	Average weekly beer plus cider intake	Average weekly beer plus cider intake (1588)	ordinal	ukbb
+1598	Average weekly spirits intake	Average weekly spirits intake (1598)	ordinal	ukbb
+1618	Alcohol usually taken with meals	Alcohol usually taken with meals (1618)	binary	ukbb
+1628	Alcohol intake versus 10 years previously	Alcohol intake versus 10 years previously (1628)	ordinal	ukbb
+1687	Comparative body size at age 10	Comparative body size at age 10 (1687)	ordinal	ukbb
+1697	Comparative height size at age 10	Comparative height size at age 10 (1697)	ordinal	ukbb
+1757	Facial ageing	Facial ageing (1757)	ordinal	ukbb
+1787	Maternal smoking around birth	Maternal smoking around birth (1787)	binary	ukbb
+1807_irnt	Father's age at death	Father's age at death (1807_irnt)	continuous_irnt	ukbb
+189_irnt	Townsend deprivation index at recruitment	Townsend deprivation index at recruitment (189_irnt)	continuous_irnt	ukbb
+1920	Mood swings	Mood swings (1920)	binary	ukbb
+1930	Miserableness	Miserableness (1930)	binary	ukbb
+1940	Irritability	Irritability (1940)	binary	ukbb
+1950	Sensitivity / hurt feelings	Sensitivity / hurt feelings (1950)	binary	ukbb
+1960	Fed-up feelings	Fed-up feelings (1960)	binary	ukbb
+1970	Nervous feelings	Nervous feelings (1970)	binary	ukbb
+1980	Worrier / anxious feelings	Worrier / anxious feelings (1980)	binary	ukbb
+1990	Tense / 'highly strung'	Tense / 'highly strung' (1990)	binary	ukbb
+2000	Worry too long after embarrassment	Worry too long after embarrassment (2000)	binary	ukbb
+20002_1065	Non-cancer illness code, self-reported: hypertension	Non-cancer illness code, self-reported: hypertension (20002_1065)	binary	ukbb
+20002_1074	Non-cancer illness code, self-reported: angina	Non-cancer illness code, self-reported: angina (20002_1074)	binary	ukbb
+20002_1111	Non-cancer illness code, self-reported: asthma	Non-cancer illness code, self-reported: asthma (20002_1111)	binary	ukbb
+20002_1220	Non-cancer illness code, self-reported: diabetes	Non-cancer illness code, self-reported: diabetes (20002_1220)	binary	ukbb
+20002_1286	Non-cancer illness code, self-reported: depression	Non-cancer illness code, self-reported: depression (20002_1286)	binary	ukbb
+20002_1387	Non-cancer illness code, self-reported: hayfever/allergic rhinitis	Non-cancer illness code, self-reported: hayfever/allergic rhinitis (20002_1387)	binary	ukbb
+20002_1465	Non-cancer illness code, self-reported: osteoarthritis	Non-cancer illness code, self-reported: osteoarthritis (20002_1465)	binary	ukbb
+20002_1473	Non-cancer illness code, self-reported: high cholesterol	Non-cancer illness code, self-reported: high cholesterol (20002_1473)	binary	ukbb
+20003_1140860806	Treatment/medication code: ramipril	Treatment/medication code: ramipril (20003_1140860806)	binary	ukbb
+20003_1140861958	Treatment/medication code: simvastatin	Treatment/medication code: simvastatin (20003_1140861958)	binary	ukbb
+20003_1140865634	Treatment/medication code: omeprazole	Treatment/medication code: omeprazole (20003_1140865634)	binary	ukbb
+20003_1140866738	Treatment/medication code: atenolol	Treatment/medication code: atenolol (20003_1140866738)	binary	ukbb
+20003_1140868226	Treatment/medication code: aspirin	Treatment/medication code: aspirin (20003_1140868226)	binary	ukbb
+20003_1140871310	Treatment/medication code: ibuprofen	Treatment/medication code: ibuprofen (20003_1140871310)	binary	ukbb
+20003_1140879802	Treatment/medication code: amlodipine	Treatment/medication code: amlodipine (20003_1140879802)	binary	ukbb
+20003_1141194794	Treatment/medication code: bendroflumethiazide	Treatment/medication code: bendroflumethiazide (20003_1141194794)	binary	ukbb
+20003_2038460150	Treatment/medication code: paracetamol	Treatment/medication code: paracetamol (20003_2038460150)	binary	ukbb
+20015_irnt	Sitting height	Sitting height (20015_irnt)	continuous_irnt	ukbb
+20016_irnt	Fluid intelligence score	Fluid intelligence score (20016_irnt)	continuous_irnt	ukbb
+20022_irnt	Birth weight	Birth weight (20022_irnt)	continuous_irnt	ukbb
+20023_irnt	Mean time to correctly identify matches	Mean time to correctly identify matches (20023_irnt)	continuous_irnt	ukbb
+2010	Suffer from 'nerves'	Suffer from 'nerves' (2010)	binary	ukbb
+20107_1	Illnesses of father: Heart disease	Illnesses of father: Heart disease (20107_1)	binary	ukbb
+20107_8	Illnesses of father: High blood pressure	Illnesses of father: High blood pressure (20107_8)	binary	ukbb
+20107_9	Illnesses of father: Diabetes	Illnesses of father: Diabetes (20107_9)	binary	ukbb
+20110_8	Illnesses of mother: High blood pressure	Illnesses of mother: High blood pressure (20110_8)	binary	ukbb
+20110_9	Illnesses of mother: Diabetes	Illnesses of mother: Diabetes (20110_9)	binary	ukbb
+20111_1	Illnesses of siblings: Heart disease	Illnesses of siblings: Heart disease (20111_1)	binary	ukbb
+20111_8	Illnesses of siblings: High blood pressure	Illnesses of siblings: High blood pressure (20111_8)	binary	ukbb
+20111_9	Illnesses of siblings: Diabetes	Illnesses of siblings: Diabetes (20111_9)	binary	ukbb
+20116_0	Smoking status: Never	Smoking status: Never (20116_0)	binary	ukbb
+20116_1	Smoking status: Previous	Smoking status: Previous (20116_1)	binary	ukbb
+20116_2	Smoking status: Current	Smoking status: Current (20116_2)	binary	ukbb
+20117_2	Alcohol drinker status: Current	Alcohol drinker status: Current (20117_2)	binary	ukbb
+20127_irnt	Neuroticism score	Neuroticism score (20127_irnt)	continuous_irnt	ukbb
+20128	Number of fluid intelligence questions attempted within time limit	Number of fluid intelligence questions attempted within time limit (20128)	ordinal	ukbb
+20150_irnt	Forced expiratory volume in 1-second (FEV1), Best measure	Forced expiratory volume in 1-second (FEV1), Best measure (20150_irnt)	continuous_irnt	ukbb
+20151_irnt	Forced vital capacity (FVC), Best measure	Forced vital capacity (FVC), Best measure (20151_irnt)	continuous_irnt	ukbb
+20153_irnt	Forced expiratory volume in 1-second (FEV1), predicted	Forced expiratory volume in 1-second (FEV1), predicted (20153_irnt)	continuous_irnt	ukbb
+20154_irnt	Forced expiratory volume in 1-second (FEV1), predicted percentage	Forced expiratory volume in 1-second (FEV1), predicted percentage (20154_irnt)	continuous_irnt	ukbb
+20160	Ever smoked	Ever smoked (20160)	binary	ukbb
+2020	Loneliness, isolation	Loneliness, isolation (2020)	binary	ukbb
+2030	Guilty feelings	Guilty feelings (2030)	binary	ukbb
+2040	Risk taking	Risk taking (2040)	binary	ukbb
+20421	Ever felt worried, tense, or anxious for most of a month or longer	Ever felt worried, tense, or anxious for most of a month or longer (20421)	binary	ukbb
+20441	Ever had prolonged loss of interest in normal activities	Ever had prolonged loss of interest in normal activities (20441)	binary	ukbb
+20446	Ever had prolonged feelings of sadness or depression	Ever had prolonged feelings of sadness or depression (20446)	binary	ukbb
+20458	General happiness	General happiness (20458)	ordinal	ukbb
+20459	General happiness with own health	General happiness with own health (20459)	ordinal	ukbb
+20460	Belief that own life is meaningful	Belief that own life is meaningful (20460)	ordinal	ukbb
+20479	Ever thought that life not worth living	Ever thought that life not worth living (20479)	ordinal	ukbb
+20487	Felt hated by family member as a child	Felt hated by family member as a child (20487)	ordinal	ukbb
+20488	Physically abused by family as a child	Physically abused by family as a child (20488)	ordinal	ukbb
+20489	Felt loved as a child	Felt loved as a child (20489)	ordinal	ukbb
+20498	Felt very upset when reminded of stressful experience in past month	Felt very upset when reminded of stressful experience in past month (20498)	ordinal	ukbb
+20499	Ever sought or received professional help for mental distress	Ever sought or received professional help for mental distress (20499)	binary	ukbb
+2050	Frequency of depressed mood in last 2 weeks	Frequency of depressed mood in last 2 weeks (2050)	ordinal	ukbb
+20500	Ever suffered mental distress preventing usual activities	Ever suffered mental distress preventing usual activities (20500)	binary	ukbb
+20502	Ever had period extreme irritability	Ever had period extreme irritability (20502)	binary	ukbb
+20517	Trouble falling or staying asleep, or sleeping too much	Trouble falling or staying asleep, or sleeping too much (20517)	ordinal	ukbb
+20519	Recent feelings of tiredness or low energy	Recent feelings of tiredness or low energy (20519)	ordinal	ukbb
+20546_3	Substances taken for depression: Medication prescribed to you (for at least two weeks)	Substances taken for depression: Medication prescribed to you (for at least two weeks) (20546_3)	binary	ukbb
+20547_1	Activities undertaken to treat depression: Talking therapies, such as psychotherapy, counselling, group therapy or CBT	Activities undertaken to treat depression: Talking therapies, such as psychotherapy, counselling, group therapy or CBT (20547_1)	binary	ukbb
+2060	Frequency of unenthusiasm / disinterest in last 2 weeks	Frequency of unenthusiasm / disinterest in last 2 weeks (2060)	ordinal	ukbb
+2070	Frequency of tenseness / restlessness in last 2 weeks	Frequency of tenseness / restlessness in last 2 weeks (2070)	ordinal	ukbb
+2080	Frequency of tiredness / lethargy in last 2 weeks	Frequency of tiredness / lethargy in last 2 weeks (2080)	ordinal	ukbb
+2090	Seen doctor (GP) for nerves, anxiety, tension or depression	Seen doctor (GP) for nerves, anxiety, tension or depression (2090)	binary	ukbb
+2100	Seen a psychiatrist for nerves, anxiety, tension or depression	Seen a psychiatrist for nerves, anxiety, tension or depression (2100)	binary	ukbb
+21001_irnt	Body mass index (BMI)	Body mass index (BMI) (21001_irnt)	continuous_irnt	ukbb
+21002_irnt	Weight	Weight (21002_irnt)	continuous_irnt	ukbb
+2129	Answered sexual history questions	Answered sexual history questions (2129)	binary	ukbb
+2139_irnt	Age first had sexual intercourse	Age first had sexual intercourse (2139_irnt)	continuous_irnt	ukbb
+2149	Lifetime number of sexual partners	Lifetime number of sexual partners (2149)	ordinal	ukbb
+2178	Overall health rating	Overall health rating (2178)	ordinal	ukbb
+2188	Long-standing illness, disability or infirmity	Long-standing illness, disability or infirmity (2188)	binary	ukbb
+22126	Doctor diagnosed hayfever or allergic rhinitis	Doctor diagnosed hayfever or allergic rhinitis (22126)	binary	ukbb
+2217_irnt	Age started wearing glasses or contact lenses	Age started wearing glasses or contact lenses (2217_irnt)	continuous_irnt	ukbb
+2237	Plays computer games	Plays computer games (2237)	ordinal	ukbb
+2247_0	Hearing difficulty/problems: No	Hearing difficulty/problems: No (2247_0)	binary	ukbb
+2247_1	Hearing difficulty/problems: Yes	Hearing difficulty/problems: Yes (2247_1)	binary	ukbb
+22501_irnt	Year ended full time education	Year ended full time education (22501_irnt)	continuous_irnt	ukbb
+22506_113	Tobacco smoking: Ex-smoker	Tobacco smoking: Ex-smoker (22506_113)	binary	ukbb
+22506_114	Tobacco smoking: Never smoked	Tobacco smoking: Never smoked (22506_114)	binary	ukbb
+2257	Hearing difficulty/problems with background noise	Hearing difficulty/problems with background noise (2257)	binary	ukbb
+22704_irnt	Home location - north co-ordinate (rounded)	Home location - north co-ordinate (rounded) (22704_irnt)	continuous_irnt	ukbb
+2296	Falls in the last year	Falls in the last year (2296)	ordinal	ukbb
+23099_irnt	Body fat percentage	Body fat percentage (23099_irnt)	continuous_irnt	ukbb
+23100_irnt	Whole body fat mass	Whole body fat mass (23100_irnt)	continuous_irnt	ukbb
+23101_irnt	Whole body fat-free mass	Whole body fat-free mass (23101_irnt)	continuous_irnt	ukbb
+23102_irnt	Whole body water mass	Whole body water mass (23102_irnt)	continuous_irnt	ukbb
+23105_irnt	Basal metabolic rate	Basal metabolic rate (23105_irnt)	continuous_irnt	ukbb
+23106_irnt	Impedance of whole body	Impedance of whole body (23106_irnt)	continuous_irnt	ukbb
+23107_irnt	Impedance of leg (right)	Impedance of leg (right) (23107_irnt)	continuous_irnt	ukbb
+23108_irnt	Impedance of leg (left)	Impedance of leg (left) (23108_irnt)	continuous_irnt	ukbb
+23109_irnt	Impedance of arm (right)	Impedance of arm (right) (23109_irnt)	continuous_irnt	ukbb
+23110_irnt	Impedance of arm (left)	Impedance of arm (left) (23110_irnt)	continuous_irnt	ukbb
+23111_irnt	Leg fat percentage (right)	Leg fat percentage (right) (23111_irnt)	continuous_irnt	ukbb
+23112_irnt	Leg fat mass (right)	Leg fat mass (right) (23112_irnt)	continuous_irnt	ukbb
+23113_irnt	Leg fat-free mass (right)	Leg fat-free mass (right) (23113_irnt)	continuous_irnt	ukbb
+23114_irnt	Leg predicted mass (right)	Leg predicted mass (right) (23114_irnt)	continuous_irnt	ukbb
+23115_irnt	Leg fat percentage (left)	Leg fat percentage (left) (23115_irnt)	continuous_irnt	ukbb
+23116_irnt	Leg fat mass (left)	Leg fat mass (left) (23116_irnt)	continuous_irnt	ukbb
+23117_irnt	Leg fat-free mass (left)	Leg fat-free mass (left) (23117_irnt)	continuous_irnt	ukbb
+23118_irnt	Leg predicted mass (left)	Leg predicted mass (left) (23118_irnt)	continuous_irnt	ukbb
+23119_irnt	Arm fat percentage (right)	Arm fat percentage (right) (23119_irnt)	continuous_irnt	ukbb
+23120_irnt	Arm fat mass (right)	Arm fat mass (right) (23120_irnt)	continuous_irnt	ukbb
+23121_irnt	Arm fat-free mass (right)	Arm fat-free mass (right) (23121_irnt)	continuous_irnt	ukbb
+23122_irnt	Arm predicted mass (right)	Arm predicted mass (right) (23122_irnt)	continuous_irnt	ukbb
+23123_irnt	Arm fat percentage (left)	Arm fat percentage (left) (23123_irnt)	continuous_irnt	ukbb
+23124_irnt	Arm fat mass (left)	Arm fat mass (left) (23124_irnt)	continuous_irnt	ukbb
+23125_irnt	Arm fat-free mass (left)	Arm fat-free mass (left) (23125_irnt)	continuous_irnt	ukbb
+23126_irnt	Arm predicted mass (left)	Arm predicted mass (left) (23126_irnt)	continuous_irnt	ukbb
+23127_irnt	Trunk fat percentage	Trunk fat percentage (23127_irnt)	continuous_irnt	ukbb
+23128_irnt	Trunk fat mass	Trunk fat mass (23128_irnt)	continuous_irnt	ukbb
+23129_irnt	Trunk fat-free mass	Trunk fat-free mass (23129_irnt)	continuous_irnt	ukbb
+23130_irnt	Trunk predicted mass	Trunk predicted mass (23130_irnt)	continuous_irnt	ukbb
+2316	Wheeze or whistling in the chest in last year	Wheeze or whistling in the chest in last year (2316)	binary	ukbb
+2335	Chest pain or discomfort	Chest pain or discomfort (2335)	binary	ukbb
+2443	Diabetes diagnosed by doctor	Diabetes diagnosed by doctor (2443)	binary	ukbb
+2463	Fractured/broken bones in last 5 years	Fractured/broken bones in last 5 years (2463)	binary	ukbb
+2473	Other serious medical condition/disability diagnosed by doctor	Other serious medical condition/disability diagnosed by doctor (2473)	binary	ukbb
+2492	Taking other prescription medications	Taking other prescription medications (2492)	binary	ukbb
+2644	Light smokers, at least 100 smokes in lifetime	Light smokers, at least 100 smokes in lifetime (2644)	binary	ukbb
+2664_3	Reason for reducing amount of alcohol drunk: Health precaution	Reason for reducing amount of alcohol drunk: Health precaution (2664_3)	binary	ukbb
+2754_irnt	Age at first live birth	Age at first live birth (2754_irnt)	continuous_irnt	ukbb
+2764_irnt	Age at last live birth	Age at last live birth (2764_irnt)	continuous_irnt	ukbb
+2794_irnt	Age started oral contraceptive pill	Age started oral contraceptive pill (2794_irnt)	continuous_irnt	ukbb
+2867_irnt	Age started smoking in former smokers	Age started smoking in former smokers (2867_irnt)	continuous_irnt	ukbb
+2966_irnt	Age high blood pressure diagnosed	Age high blood pressure diagnosed (2966_irnt)	continuous_irnt	ukbb
+30000_irnt	White blood cell (leukocyte) count	White blood cell (leukocyte) count (30000_irnt)	continuous_irnt	ukbb
+30010_irnt	Red blood cell (erythrocyte) count	Red blood cell (erythrocyte) count (30010_irnt)	continuous_irnt	ukbb
+30020_irnt	Haemoglobin concentration	Haemoglobin concentration (30020_irnt)	continuous_irnt	ukbb
+30030_irnt	Haematocrit percentage	Haematocrit percentage (30030_irnt)	continuous_irnt	ukbb
+30060_irnt	Mean corpuscular haemoglobin concentration	Mean corpuscular haemoglobin concentration (30060_irnt)	continuous_irnt	ukbb
+30070_irnt	Red blood cell (erythrocyte) distribution width	Red blood cell (erythrocyte) distribution width (30070_irnt)	continuous_irnt	ukbb
+30120_irnt	Lymphocyte count	Lymphocyte count (30120_irnt)	continuous_irnt	ukbb
+30140_irnt	Neutrophill count	Neutrophill count (30140_irnt)	continuous_irnt	ukbb
+30150	Eosinophill count	Eosinophill count (30150)	ordinal	ukbb
+30180_irnt	Lymphocyte percentage	Lymphocyte percentage (30180_irnt)	continuous_irnt	ukbb
+30200_irnt	Neutrophill percentage	Neutrophill percentage (30200_irnt)	continuous_irnt	ukbb
+30210_irnt	Eosinophill percentage	Eosinophill percentage (30210_irnt)	continuous_irnt	ukbb
+30280_irnt	Immature reticulocyte fraction	Immature reticulocyte fraction (30280_irnt)	continuous_irnt	ukbb
+30510_irnt	Creatinine (enzymatic) in urine	Creatinine (enzymatic) in urine (30510_irnt)	continuous_irnt	ukbb
+30520_irnt	Potassium in urine	Potassium in urine (30520_irnt)	continuous_irnt	ukbb
+30530_irnt	Sodium in urine	Sodium in urine (30530_irnt)	continuous_irnt	ukbb
+30600_irnt	Albumin (g/L)	Albumin (g/L) (30600_irnt)	continuous_irnt	ukbb
+3062_irnt	Forced vital capacity (FVC)	Forced vital capacity (FVC) (3062_irnt)	continuous_irnt	ukbb
+30620_irnt	Alanine aminotransferase (U/L)	Alanine aminotransferase (U/L) (30620_irnt)	continuous_irnt	ukbb
+3063_irnt	Forced expiratory volume in 1-second (FEV1)	Forced expiratory volume in 1-second (FEV1) (3063_irnt)	continuous_irnt	ukbb
+3064_irnt	Peak expiratory flow (PEF)	Peak expiratory flow (PEF) (3064_irnt)	continuous_irnt	ukbb
+30650_irnt	Aspartate aminotransferase (U/L)	Aspartate aminotransferase (U/L) (30650_irnt)	continuous_irnt	ukbb
+30670_irnt	Urea (mmol/L)	Urea (mmol/L) (30670_irnt)	continuous_irnt	ukbb
+30680_irnt	Calcium (mmol/L)	Calcium (mmol/L) (30680_irnt)	continuous_irnt	ukbb
+30700_irnt	Creatinine (umol/L)	Creatinine (umol/L) (30700_irnt)	continuous_irnt	ukbb
+30750_irnt	Glycated haemoglobin (mmol/mol)	Glycated haemoglobin (mmol/mol) (30750_irnt)	continuous_irnt	ukbb
+30770_irnt	IGF-1 (nmol/L)	IGF-1 (nmol/L) (30770_irnt)	continuous_irnt	ukbb
+30810_irnt	Phosphate (mmol/L)	Phosphate (mmol/L) (30810_irnt)	continuous_irnt	ukbb
+30850_irnt	Testosterone (nmol/L)	Testosterone (nmol/L) (30850_irnt)	continuous_irnt	ukbb
+30860_irnt	Total protein (g/L)	Total protein (g/L) (30860_irnt)	continuous_irnt	ukbb
+3143_irnt	Ankle spacing width	Ankle spacing width (3143_irnt)	continuous_irnt	ukbb
+3144_irnt	Heel Broadband ultrasound attenuation, direct entry	Heel Broadband ultrasound attenuation, direct entry (3144_irnt)	continuous_irnt	ukbb
+3147_irnt	Heel quantitative ultrasound index (QUI), direct entry	Heel quantitative ultrasound index (QUI), direct entry (3147_irnt)	continuous_irnt	ukbb
+3148_irnt	Heel bone mineral density (BMD)	Heel bone mineral density (BMD) (3148_irnt)	continuous_irnt	ukbb
+3581_irnt	Age at menopause (last menstrual period)	Age at menopause (last menstrual period) (3581_irnt)	continuous_irnt	ukbb
+399_irnt	Number of incorrect matches in round	Number of incorrect matches in round (399_irnt)	continuous_irnt	ukbb
+400_irnt	Time to complete round	Time to complete round (400_irnt)	continuous_irnt	ukbb
+404_irnt	Duration to first press of snap-button in each round	Duration to first press of snap-button in each round (404_irnt)	continuous_irnt	ukbb
+4079_irnt	Diastolic blood pressure, automated reading	Diastolic blood pressure, automated reading (4079_irnt)	continuous_irnt	ukbb
+4080_irnt	Systolic blood pressure, automated reading	Systolic blood pressure, automated reading (4080_irnt)	continuous_irnt	ukbb
+4100_irnt	Ankle spacing width (left)	Ankle spacing width (left) (4100_irnt)	continuous_irnt	ukbb
+4101_irnt	Heel broadband ultrasound attenuation (left)	Heel broadband ultrasound attenuation (left) (4101_irnt)	continuous_irnt	ukbb
+4104_irnt	Heel quantitative ultrasound index (QUI), direct entry (left)	Heel quantitative ultrasound index (QUI), direct entry (left) (4104_irnt)	continuous_irnt	ukbb
+4105_irnt	Heel bone mineral density (BMD) (left)	Heel bone mineral density (BMD) (left) (4105_irnt)	continuous_irnt	ukbb
+4106_irnt	Heel bone mineral density (BMD) T-score, automated (left)	Heel bone mineral density (BMD) T-score, automated (left) (4106_irnt)	continuous_irnt	ukbb
+4119_irnt	Ankle spacing width (right)	Ankle spacing width (right) (4119_irnt)	continuous_irnt	ukbb
+4120_irnt	Heel broadband ultrasound attenuation (right)	Heel broadband ultrasound attenuation (right) (4120_irnt)	continuous_irnt	ukbb
+4123_irnt	Heel quantitative ultrasound index (QUI), direct entry (right)	Heel quantitative ultrasound index (QUI), direct entry (right) (4123_irnt)	continuous_irnt	ukbb
+41231_1	Hospital episode type: General episode	Hospital episode type: General episode (41231_1)	binary	ukbb
+41235	Spells in hospital	Spells in hospital (41235)	ordinal	ukbb
+4124_irnt	Heel bone mineral density (BMD) (right)	Heel bone mineral density (BMD) (right) (4124_irnt)	continuous_irnt	ukbb
+41248_1000	Destinations on discharge from hospital (recoded): Usual Place of residence	Destinations on discharge from hospital (recoded): Usual Place of residence (41248_1000)	binary	ukbb
+4125_irnt	Heel bone mineral density (BMD) T-score, automated (right)	Heel bone mineral density (BMD) T-score, automated (right) (4125_irnt)	continuous_irnt	ukbb
+4194_irnt	Pulse rate	Pulse rate (4194_irnt)	continuous_irnt	ukbb
+4195_irnt	Pulse wave reflection index	Pulse wave reflection index (4195_irnt)	continuous_irnt	ukbb
+4290_irnt	Duration screen displayed	Duration screen displayed (4290_irnt)	continuous_irnt	ukbb
+4526	Happiness	Happiness (4526)	ordinal	ukbb
+4548	Health satisfaction	Health satisfaction (4548)	ordinal	ukbb
+4559	Family relationship satisfaction	Family relationship satisfaction (4559)	ordinal	ukbb
+4570	Friendships satisfaction	Friendships satisfaction (4570)	ordinal	ukbb
+4581	Financial situation satisfaction	Financial situation satisfaction (4581)	ordinal	ukbb
+4598	Ever depressed for a whole week	Ever depressed for a whole week (4598)	binary	ukbb
+46_irnt	Hand grip strength (left)	Hand grip strength (left) (46_irnt)	continuous_irnt	ukbb
+47_irnt	Hand grip strength (right)	Hand grip strength (right) (47_irnt)	continuous_irnt	ukbb
+4728	Leg pain on walking	Leg pain on walking (4728)	binary	ukbb
+48_irnt	Waist circumference	Waist circumference (48_irnt)	continuous_irnt	ukbb
+4803_0	Tinnitus: No, never	Tinnitus: No, never (4803_0)	binary	ukbb
+49_irnt	Hip circumference	Hip circumference (49_irnt)	continuous_irnt	ukbb
+4957	FI3 : word interpolation	FI3 : word interpolation (4957)	binary	ukbb
+4968	FI4 : positional arithmetic	FI4 : positional arithmetic (4968)	binary	ukbb
+4990	FI6 : conditional arithmetic	FI6 : conditional arithmetic (4990)	binary	ukbb
+50_irnt	Standing height	Standing height (50_irnt)	continuous_irnt	ukbb
+5012	FI8 : chained arithmetic	FI8 : chained arithmetic (5012)	binary	ukbb
+5084_irnt	Spherical power (right)	Spherical power (right) (5084_irnt)	continuous_irnt	ukbb
+5085_irnt	Spherical power (left)	Spherical power (left) (5085_irnt)	continuous_irnt	ukbb
+5096_irnt	3mm weak meridian (left)	3mm weak meridian (left) (5096_irnt)	continuous_irnt	ukbb
+5097_irnt	6mm weak meridian (left)	6mm weak meridian (left) (5097_irnt)	continuous_irnt	ukbb
+5098_irnt	6mm weak meridian (right)	6mm weak meridian (right) (5098_irnt)	continuous_irnt	ukbb
+5099_irnt	3mm weak meridian (right)	3mm weak meridian (right) (5099_irnt)	continuous_irnt	ukbb
+5104_irnt	3mm strong meridian angle (left)	3mm strong meridian angle (left) (5104_irnt)	continuous_irnt	ukbb
+5116_irnt	3mm cylindrical power (right)	3mm cylindrical power (right) (5116_irnt)	continuous_irnt	ukbb
+5119_irnt	3mm cylindrical power (left)	3mm cylindrical power (left) (5119_irnt)	continuous_irnt	ukbb
+5132_irnt	3mm strong meridian (right)	3mm strong meridian (right) (5132_irnt)	continuous_irnt	ukbb
+5133_irnt	6mm strong meridian (right)	6mm strong meridian (right) (5133_irnt)	continuous_irnt	ukbb
+5134_irnt	6mm strong meridian (left)	6mm strong meridian (left) (5134_irnt)	continuous_irnt	ukbb
+5135_irnt	3mm strong meridian (left)	3mm strong meridian (left) (5135_irnt)	continuous_irnt	ukbb
+5254_irnt	Intra-ocular pressure, corneal-compensated (right)	Intra-ocular pressure, corneal-compensated (right) (5254_irnt)	continuous_irnt	ukbb
+5255_irnt	Intra-ocular pressure, Goldmann-correlated (right)	Intra-ocular pressure, Goldmann-correlated (right) (5255_irnt)	continuous_irnt	ukbb
+5256_irnt	Corneal hysteresis (right)	Corneal hysteresis (right) (5256_irnt)	continuous_irnt	ukbb
+5257_irnt	Corneal resistance factor (right)	Corneal resistance factor (right) (5257_irnt)	continuous_irnt	ukbb
+5262_irnt	Intra-ocular pressure, corneal-compensated (left)	Intra-ocular pressure, corneal-compensated (left) (5262_irnt)	continuous_irnt	ukbb
+5263_irnt	Intra-ocular pressure, Goldmann-correlated (left)	Intra-ocular pressure, Goldmann-correlated (left) (5263_irnt)	continuous_irnt	ukbb
+5264_irnt	Corneal hysteresis (left)	Corneal hysteresis (left) (5264_irnt)	continuous_irnt	ukbb
+5265_irnt	Corneal resistance factor (left)	Corneal resistance factor (left) (5265_irnt)	continuous_irnt	ukbb
+6138_1	Qualifications: College or University degree	Qualifications: College or University degree (6138_1)	binary	ukbb
+6138_2	Qualifications: A levels/AS levels or equivalent	Qualifications: A levels/AS levels or equivalent (6138_2)	binary	ukbb
+6138_3	Qualifications: O levels/GCSEs or equivalent	Qualifications: O levels/GCSEs or equivalent (6138_3)	binary	ukbb
+6138_5	Qualifications: NVQ or HND or HNC or equivalent	Qualifications: NVQ or HND or HNC or equivalent (6138_5)	binary	ukbb
+6138_6	Qualifications: Other professional qualifications eg: nursing, teaching	Qualifications: Other professional qualifications eg: nursing, teaching (6138_6)	binary	ukbb
+6139_3	Gas or solid-fuel cooking/heating: An open solid fuel fire that you use regularly in winter time	Gas or solid-fuel cooking/heating: An open solid fuel fire that you use regularly in winter time (6139_3)	binary	ukbb
+6141_1	How are people in household related to participant: Husband, wife or partner	How are people in household related to participant: Husband, wife or partner (6141_1)	binary	ukbb
+6142_4	Current employment status: Unable to work because of sickness or disability	Current employment status: Unable to work because of sickness or disability (6142_4)	binary	ukbb
+6144_4	Never eat eggs, dairy, wheat, sugar: Sugar or foods/drinks containing sugar	Never eat eggs, dairy, wheat, sugar: Sugar or foods/drinks containing sugar (6144_4)	binary	ukbb
+6144_5	Never eat eggs, dairy, wheat, sugar: I eat all of the above	Never eat eggs, dairy, wheat, sugar: I eat all of the above (6144_5)	binary	ukbb
+6145_1	Illness, injury, bereavement, stress in last 2 years: Serious illness, injury or assault to yourself	Illness, injury, bereavement, stress in last 2 years: Serious illness, injury or assault to yourself (6145_1)	binary	ukbb
+6145_6	Illness, injury, bereavement, stress in last 2 years: Financial difficulties	Illness, injury, bereavement, stress in last 2 years: Financial difficulties (6145_6)	binary	ukbb
+6146_2	Attendance/disability/mobility allowance: Disability living allowance	Attendance/disability/mobility allowance: Disability living allowance (6146_2)	binary	ukbb
+6146_3	Attendance/disability/mobility allowance: Blue badge	Attendance/disability/mobility allowance: Blue badge (6146_3)	binary	ukbb
+6147_1	Reason for glasses/contact lenses: For short-sightedness, i.e. only or mainly for distance viewing such as driving, cinema etc (called 'myopia')	Reason for glasses/contact lenses: For short-sightedness, i.e. only or mainly for distance viewing such as driving, cinema etc (called 'myopia') (6147_1)	binary	ukbb
+6149_1	Mouth/teeth dental problems: Mouth ulcers	Mouth/teeth dental problems: Mouth ulcers (6149_1)	binary	ukbb
+6149_3	Mouth/teeth dental problems: Bleeding gums	Mouth/teeth dental problems: Bleeding gums (6149_3)	binary	ukbb
+6149_6	Mouth/teeth dental problems: Dentures	Mouth/teeth dental problems: Dentures (6149_6)	binary	ukbb
+6150_2	Vascular/heart problems diagnosed by doctor: Angina	Angina (6150_2)	binary	ukbb
+6150_4	Vascular/heart problems diagnosed by doctor: High blood pressure	High blood pressure (6150_4)	binary	ukbb
+6152_8	Blood clot, DVT, bronchitis, emphysema, asthma, rhinitis, eczema, allergy diagnosed by doctor: Asthma	Asthma (6152_8)	binary	ukbb
+6152_9	Blood clot, DVT, bronchitis, emphysema, asthma, rhinitis, eczema, allergy diagnosed by doctor: Hayfever, allergic rhinitis or eczema	Hayfever, allergic rhinitis or eczema (6152_9)	binary	ukbb
+6154_1	Medication for pain relief, constipation, heartburn: Aspirin	Medication for pain relief, constipation, heartburn: Aspirin (6154_1)	binary	ukbb
+6154_2	Medication for pain relief, constipation, heartburn: Ibuprofen (e.g. Nurofen)	Medication for pain relief, constipation, heartburn: Ibuprofen (e.g. Nurofen) (6154_2)	binary	ukbb
+6154_3	Medication for pain relief, constipation, heartburn: Paracetamol	Medication for pain relief, constipation, heartburn: Paracetamol (6154_3)	binary	ukbb
+6154_5	Medication for pain relief, constipation, heartburn: Omeprazole (e.g. Zanprol)	Medication for pain relief, constipation, heartburn: Omeprazole (e.g. Zanprol) (6154_5)	binary	ukbb
+6155_7	Vitamin and mineral supplements: Multivitamins +/- minerals	Vitamin and mineral supplements: Multivitamins +/- minerals (6155_7)	binary	ukbb
+6159_1	Pain type(s) experienced in last month: Headache	Pain type(s) experienced in last month: Headache (6159_1)	binary	ukbb
+6159_3	Pain type(s) experienced in last month: Neck or shoulder pain	Pain type(s) experienced in last month: Neck or shoulder pain (6159_3)	binary	ukbb
+6159_4	Pain type(s) experienced in last month: Back pain	Pain type(s) experienced in last month: Back pain (6159_4)	binary	ukbb
+6159_5	Pain type(s) experienced in last month: Stomach or abdominal pain	Pain type(s) experienced in last month: Stomach or abdominal pain (6159_5)	binary	ukbb
+6159_6	Pain type(s) experienced in last month: Hip pain	Pain type(s) experienced in last month: Hip pain (6159_6)	binary	ukbb
+6159_7	Pain type(s) experienced in last month: Knee pain	Pain type(s) experienced in last month: Knee pain (6159_7)	binary	ukbb
+6160_1	Leisure/social activities: Sports club or gym	Leisure/social activities: Sports club or gym (6160_1)	binary	ukbb
+6160_2	Leisure/social activities: Pub or social club	Leisure/social activities: Pub or social club (6160_2)	binary	ukbb
+6160_3	Leisure/social activities: Religious group	Leisure/social activities: Religious group (6160_3)	binary	ukbb
+6160_4	Leisure/social activities: Adult education class	Leisure/social activities: Adult education class (6160_4)	binary	ukbb
+6160_5	Leisure/social activities: Other group activity	Leisure/social activities: Other group activity (6160_5)	binary	ukbb
+6162_1	Types of transport used (excluding work): Car/motor vehicle	Types of transport used (excluding work): Car/motor vehicle (6162_1)	binary	ukbb
+6162_2	Types of transport used (excluding work): Walk	Types of transport used (excluding work): Walk (6162_2)	binary	ukbb
+6162_3	Types of transport used (excluding work): Public transport	Types of transport used (excluding work): Public transport (6162_3)	binary	ukbb
+6162_4	Types of transport used (excluding work): Cycle	Types of transport used (excluding work): Cycle (6162_4)	binary	ukbb
+6164_1	Types of physical activity in last 4 weeks: Walking for pleasure (not as a means of transport)	Types of physical activity in last 4 weeks: Walking for pleasure (not as a means of transport) (6164_1)	binary	ukbb
+6164_2	Types of physical activity in last 4 weeks: Other exercises (eg: swimming, cycling, keep fit, bowling)	Types of physical activity in last 4 weeks: Other exercises (eg: swimming, cycling, keep fit, bowling) (6164_2)	binary	ukbb
+6164_3	Types of physical activity in last 4 weeks: Strenuous sports	Types of physical activity in last 4 weeks: Strenuous sports (6164_3)	binary	ukbb
+6164_4	Types of physical activity in last 4 weeks: Light DIY (eg: pruning, watering the lawn)	Types of physical activity in last 4 weeks: Light DIY (eg: pruning, watering the lawn) (6164_4)	binary	ukbb
+6164_5	Types of physical activity in last 4 weeks: Heavy DIY (eg: weeding, lawn mowing, carpentry, digging)	Types of physical activity in last 4 weeks: Heavy DIY (eg: weeding, lawn mowing, carpentry, digging) (6164_5)	binary	ukbb
+6179_1	Mineral and other dietary supplements: Fish oil (including cod liver oil)	Mineral and other dietary supplements: Fish oil (including cod liver oil) (6179_1)	binary	ukbb
+6179_2	Mineral and other dietary supplements: Glucosamine	Mineral and other dietary supplements: Glucosamine (6179_2)	binary	ukbb
+680_1	Own or rent accommodation lived in: Own outright (by you or someone in your household)	Own or rent accommodation lived in: Own outright (by you or someone in your household) (680_1)	binary	ukbb
+680_3	Own or rent accommodation lived in: Rent - from local authority, local council, housing association	Own or rent accommodation lived in: Rent - from local authority, local council, housing association (680_3)	binary	ukbb
+699_irnt	Length of time at current address	Length of time at current address (699_irnt)	continuous_irnt	ukbb
+728	Number of vehicles in household	Number of vehicles in household (728)	ordinal	ukbb
+78_irnt	Heel bone mineral density (BMD) T-score, automated	Heel bone mineral density (BMD) T-score, automated (78_irnt)	continuous_irnt	ukbb
+806	Job involves mainly walking or standing	Job involves mainly walking or standing (806)	ordinal	ukbb
+816	Job involves heavy manual or physical work	Job involves heavy manual or physical work (816)	ordinal	ukbb
+826	Job involves shift work	Job involves shift work (826)	ordinal	ukbb
+845	Age completed full time education	Age completed full time education (845)	ordinal	ukbb
+864	Number of days/week walked 10+ minutes	Number of days/week walked 10+ minutes (864)	ordinal	ukbb
+874_irnt	Duration of walks	Duration of walks (874_irnt)	continuous_irnt	ukbb
+884	Number of days/week of moderate physical activity 10+ minutes	Number of days/week of moderate physical activity 10+ minutes (884)	ordinal	ukbb
+894	Duration of moderate activity	Duration of moderate activity (894)	ordinal	ukbb
+904	Number of days/week of vigorous physical activity 10+ minutes	Number of days/week of vigorous physical activity 10+ minutes (904)	ordinal	ukbb
+914_irnt	Duration of vigorous activity	Duration of vigorous activity (914_irnt)	continuous_irnt	ukbb
+924	Usual walking pace	Usual walking pace (924)	ordinal	ukbb
+G6_NERPLEX	Nerve, nerve root and plexus disorders	Nerve, nerve root and plexus disorders (G6_NERPLEX)	binary	ukbb
+H7_LENS	Disorders of lens	Disorders of lens (H7_LENS)	binary	ukbb
+I9_DISVEINLYMPH	Diseases of veins, lymphatic vessels and lymph nodes, not elsewhere classified	Diseases of veins, lymphatic vessels and lymph nodes (I9_DISVEINLYMPH)	binary	ukbb
+I9_IHD	Ischaemic heart disease, wide definition	Ischaemic heart disease, wide definition (I9_IHD)	binary	ukbb
+ICDMAIN_ANY_ENTRY	Any ICDMAIN event in hilmo or causes of death	Any ICDMAIN event in hilmo or causes of death (ICDMAIN_ANY_ENTRY)	binary	ukbb
+IX_CIRCULATORY	Diseases of the circulatory system	Diseases of the circulatory system (IX_CIRCULATORY)	binary	ukbb
+K11_GALLBILPANC	Disorders of gallbladder, biliary tract and pancreas	Disorders of gallbladder, biliary tract and pancreas (K11_GALLBILPANC)	binary	ukbb
+K57	Diagnoses - main ICD10: K57 Diverticular disease of intestine	Diagnoses - main ICD10: K57 Diverticular disease of intestine (K57)	binary	ukbb
+KNEE_ARTHROSIS	Gonarthrosis [arthrosis of knee](FG)	Gonarthrosis [arthrosis of knee](FG) (KNEE_ARTHROSIS)	binary	ukbb
+M13_ARTHROSIS	Arthrosis	Arthrosis (M13_ARTHROSIS)	binary	ukbb
+M13_OTHERJOINT	Other joint disorders	Other joint disorders (M13_OTHERJOINT)	binary	ukbb
+M17	Diagnoses - main ICD10: M17 Gonarthrosis [arthrosis of knee]	Diagnoses - main ICD10: M17 Gonarthrosis [arthrosis of knee] (M17)	binary	ukbb
+R07	Diagnoses - main ICD10: R07 Pain in throat and chest	Diagnoses - main ICD10: R07 Pain in throat and chest (R07)	binary	ukbb
+VI_NERVOUS	Diseases of the nervous system	Diseases of the nervous system (VI_NERVOUS)	binary	ukbb
+XI_DIGESTIVE	Diseases of the digestive system	Diseases of the digestive system (XI_DIGESTIVE)	binary	ukbb
+XIII_MUSCULOSKELET	Diseases of the musculoskeletal system and connective tissue	Diseases of the musculoskeletal system and connective tissue (XIII_MUSCULOSKELET)	binary	ukbb
+XIX_INJURY_POISON	Injury, poisoning and certain other consequences of external causes	Injury, poisoning and certain other consequences of external causes (XIX_INJURY_POISON)	binary	ukbb
+XVIII_MISCFINDINGS	Symptoms, signs and abnormal clinical and laboratory findings, not elsewhere classified	Symptoms, signs and abnormal clinical and laboratory findings (XVIII_MISCFINDINGS)	binary	ukbb

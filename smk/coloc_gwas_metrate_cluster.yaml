@@ -1,0 +1,24 @@
+__default__:
+  account: "scjp99"
+  mem: "4G"
+  ntasks: "1"
+  cpus: "1"
+  name: "JOBNAME.{rule}.{wildcards}"
+  output: "../run_snakemake/logs/coloc_metrate.{rule}/{wildcards}.out"
+  time: "24:00:00"
+
+
+runsusie:
+   mem: "160G"
+
+coloc:
+   mem: "4G"
+
+tidy_coloc:
+   mem: "16G"
+
+coloc_summary:
+   mem: "16G"
+
+coloc_inpeak:
+   mem: "64G"

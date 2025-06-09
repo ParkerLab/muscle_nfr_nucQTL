@@ -1,0 +1,17 @@
+celltypes:
+  - Type_1
+  - Type_2x
+  - Type_2a
+  - Endothelial
+  - Mesenchymal_Stem_Cell
+
+regions:
+  - nfr
+#  - nuc
+
+fpc_num: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 20, 30, 40, 50, 60, 70, 80, 90, 100]
+#fpc_num: [5]
+gpc_num: [5]
+window_size: 10000
+
+vcf_eigenvec: "../../data/sample_info/fusion.filtered-vcf.maf0.05-hwe1e6_plink_pruned.eigenvec"

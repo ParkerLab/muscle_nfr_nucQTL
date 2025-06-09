@@ -1,0 +1,21 @@
+celltypes:
+  - Type_1
+  - Type_2x
+  - Type_2a
+  - Endothelial
+  - Mesenchymal_Stem_Cell
+
+traits:
+#  - continuous-46-both_sexes-irnt # grip strength
+#  - continuous-22404-both_sexes-irnt
+  - continuous-23105-both_sexes-irnt # basal metabolic rate
+  - continuous-50-both_sexes-irnt # standing height
+
+
+sample_size:
+  "continuous-46-both_sexes-irnt" : "456348"
+  "continuous-22404-both_sexes-irnt" : "525929"
+type:
+  "46_irnt" : ""
+
+filter_window: 100000

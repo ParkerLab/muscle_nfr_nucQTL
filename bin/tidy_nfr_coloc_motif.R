@@ -1,0 +1,44 @@
+#!/usr/bin/env Rscript
+
+# libraries
+options(stringsAsFactors=FALSE)
+library(dplyr)
+library(optparse)
+
+option_list <- list(
+    make_option(c("--nfrqtl"), type = "character", help = "[Required] nfrqtl permutation pass result"),
+    make_option(c("--coloc"), type = "character", help = "[Required] nfr-nucqtl colocalization results"),
+    make_option(c("--celltype"), type = "character", help = "[Required] which celltype"),
+    make_option(c("--outdir"), type = "character", help = "[Required] outdir to save motif peaks")
+)
+option_parser <- OptionParser(usage = "usage: Rscript %prog [options]", option_list = option_list, add_help_option = T)
+opts = parse_args(option_parser)
+# celltype
+celltype = opts$celltype
+# read in the qtl results
+nfrqtl = read.csv(opts$nfrqtl)
+# read in the coloc results - qtl
+coloc_qtl = read.csv(opts$coloc, sep = '\t')
+
+# filter for significant qtls
+sig_nfrqtl = nfrqtl %>% filter(adj_beta_qval < 0.05)
+
+# filter for coloc qtls
+sig_colocqtl = coloc_qtl %>% filter(PP.H4.abf > 0.8) %>% select(c('hit1', 'PP.H4.abf', 'NFR_peak', 'Nucleosomal_peak'))
+
+# motif peaks
+sig_nfrqtl %>% 
+    merge(sig_colocqtl, by.x=c('phe_id'), by.y=c('NFR_peak'), all.x = TRUE) %>% 
+    filter((!is.na(Nucleosomal_peak))) %>%
+    select(c('phe_id', 'phe_chr', 'phe_from', 'phe_to', 'phe_strd')) %>%
+    write.table(file=paste0(opts$outdir, celltype, '_nfr_coloc_nuc.homerpeak'), sep = '\t', quote=F, row.names = F, col.names = F)
+
+# redefine sig_coloqtls for background
+## edit on 02/18/2025: try colocalized by low PPH4 nfrPeaks
+sig_colocqtl = coloc_qtl %>% filter(PP.H4.abf > 0.2) %>% select(c('hit1', 'PP.H4.abf', 'NFR_peak', 'Nucleosomal_peak'))
+# background peaks
+sig_nfrqtl %>% 
+    merge(sig_colocqtl, by.x=c('phe_id'), by.y=c('NFR_peak'), all.x = TRUE) %>% 
+    filter((is.na(Nucleosomal_peak))) %>%
+    select(c('phe_id', 'phe_chr', 'phe_from', 'phe_to', 'phe_strd')) %>%
+    write.table(file=paste0(opts$outdir, celltype, '_nfr_coloc_nuc_bkg.homerpeak'), sep = '\t', quote=F, row.names = F, col.names = F)

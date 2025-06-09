@@ -1,0 +1,16 @@
+celltypes:
+  - Type_1
+  - Type_2x
+  - Type_2a
+  - Endothelial
+  - Mesenchymal_Stem_Cell
+
+traits:
+  - myopathy
+  - polymyositis
+
+sample_size:
+  "myopathy" : "456348"
+  "polymyositis" : "525929"
+
+filter_window: 100000

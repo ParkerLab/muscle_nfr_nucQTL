@@ -1,0 +1,20 @@
+__default__:
+  account: "scjp99"
+  mem: "4G"
+  ntasks: "1"
+  cpus: "1"
+  name: "JOBNAME.{rule}.{wildcards}"
+  output: "../run_snakemake/logs/coloc_gwas_ukbb.{rule}/{wildcards}.out"
+  time: "48:00:00"
+
+liftover:
+   mem: "96G"
+
+get_lead_var:
+   mem: "32G"
+
+runsusie:
+   mem: "120G"
+
+coloc:
+   mem: "16G"

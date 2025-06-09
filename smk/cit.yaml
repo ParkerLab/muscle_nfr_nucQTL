@@ -1,0 +1,25 @@
+PPH4_threshold: 0.8
+
+#traits: [HMMRATAC, NucleoATAC]
+celltypes:
+  - Type_1
+  - Type_2x
+  - Type_2a
+  - Endothelial
+  - Mesenchymal_Stem_Cell
+
+filter_window: 5000
+
+#outdir_cit: "../../results/results_08082023/"
+#outdir_cit: "../../results/results_10192023/" # using individual level data
+outdir_cit: "../../results/results_07212024/" # across clusters
+
+#fdr_outdir: "../../results/results_08302023/"
+#fdr_outdir: "../../results/results_10192023/" # using individual level data
+fdr_outdir: "../../results/results_07212024/"
+
+# cov file location
+#cov_dir: "../../data/QTL_covariates_data/Type1_covariates_5GPC_281.Rda"
+cov_dir: "../../results/results_05082024/covariates/qtl_cov_full_"
+
+count_mat_dir: "../../results/results_07152024/normalized_counts/"

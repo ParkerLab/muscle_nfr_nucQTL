@@ -1,0 +1,31 @@
+celltypes:
+  - Type_1
+  - Type_2x
+  - Type_2a
+  - Endothelial
+  - Mesenchymal_Stem_Cell
+#IDS: [22]
+IDS: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22] # the list of desired ids
+
+traits:
+  grip_strength: 
+    summary: "../../results/results_10282024/nfrqtls_gripstrength_gwas_coloc_10282024.tsv"
+    lead_var: "../../results/results_09232024/gwas_ukbb/continuous-46-both_sexes-irnt/continuous-46-both_sexes-irnt_leadvar.tsv"
+  t2d: 
+    summary: "../../results/results_05212024/nfrqtls_gwas_coloc_05142024.tsv"
+    lead_var: "../../data/GWAS/diamante_T2D-European_gwas_lead_variants_hg38_ext_regions.txt"
+  standing_height: 
+    summary: "../../results/results_03312025/GWAS_standing_height_coloc_summary/nfrqtls_standing_height_gwas_coloc.tsv"
+    lead_var: "../../results/results_09232024/gwas_ukbb/continuous-50-both_sexes-irnt/continuous-50-both_sexes-irnt_leadvar.tsv"
+  basal_metabolic_rate: 
+    summary: "../../results/results_03182025/GWAS_basal_merabolic_rate_coloc_summary/nfrqtls_basal_merabolic_rate_gwas_coloc.tsv"
+    lead_var: "../../results/results_09232024/gwas_ukbb/continuous-23105-both_sexes-irnt/continuous-23105-both_sexes-irnt_leadvar.tsv"
+  fasting_insulin: 
+    summary: "../../results/results_03312025/GWAS_MAGIC_FI-EUR_coloc_summary/nfrqtls_MAGIC_FI-EUR_gwas_coloc.tsv"
+    lead_var: "../../results/results_01162025/gwas_nonukbb/MAGIC_FI-EUR/MAGIC_FI-EUR_leadvar.tsv"
+  creatinine: 
+    summary: "../../results/results_03312025/GWAS_ukbb_creatinine_coloc_summary/nfrqtls_ukbb_creatinine_gwas_coloc.tsv"
+    lead_var: "../../results/results_01162025/gwas_nonukbb/ukbb_creatinine/ukbb_creatinine_leadvar.tsv"
+  atrial_fibrillation: 
+    summary: "../../results/results_03312025/GWAS_nielsen_atrial-fibrillation_coloc_summary/nfrqtls_nielsen_atrial-fibrillation_gwas_coloc.tsv"
+    lead_var: "../../results/results_01162025/gwas_nonukbb/nielsen_atrial-fibrillation/nielsen_atrial-fibrillation_leadvar.tsv"

@@ -1,0 +1,250 @@
+#!/usr/bin/env nextflow
+
+/*
+Run ldsc using trait summary stats and annotation bed files
+Run baseline + individual annotation model
+Run baseline + all annotations model
+*/
+nextflow.enable.dsl=2
+def channel_glob(p) {
+	chan = Channel.fromPath(p[0], type: 'any').map{it -> [it.name.replaceAll(p[1], "").replaceAll("atac-", ""), it]}
+	return chan
+}
+
+def channel_glob_split(p, delim) {
+	chan = Channel.fromPath(p[0], type: 'any')
+	    .map{it -> it.name.replaceAll(p[1], "").replaceAll("atac-", "").tokenize(delim).plus([it])}
+	return chan
+}
+
+def getfile(p){
+	return Channel.fromPath(p)
+}
+
+LD_DIR = "ld_scores_by_annot"
+LD_SCORE_DIR = "${params.results}/${LD_DIR}"
+CHROMS = 1..22
+
+workflow {
+	traits = channel_glob(params.gwas)
+	annots = channel_glob(params.annotations)
+	hapmap = getfile(params.hapMap3_snplist)
+	bims = Channel.fromPath("${params.bim}")
+		.map{it -> [it.name.split("\\.")[3], it]}
+	make_annot_in = annots
+		.combine(bims)
+	make_annot_files(make_annot_in)
+	
+	p = []
+	for (chrom in CHROMS){
+		files = file("${params.plink_1kg}.${chrom}.*")
+		p << [chrom.toString(), files]
+	}
+	plink = Channel.fromList(p)
+	
+	calculate_LD_scores_in = make_annot_files.out.main
+		.combine(plink, by: 0)
+		.combine(hapmap)
+	calculate_LD_scores(calculate_LD_scores_in)
+	
+	annots_chan = make_annot_files.out.ldannot
+		.groupTuple(by: 0)
+	ld_chan = calculate_LD_scores.out.main
+		.transpose().groupTuple(by: 0)
+	annot_enrichment_in = ld_chan
+		.combine(annots_chan, by: 0)
+		.combine(traits)
+		// .take(2)
+	// single_annot_enrichment(annot_enrichment_in)
+
+	annots_all = make_annot_files.out.forjoint
+		.unique()
+	ld_all = calculate_LD_scores.out.forjoint
+		.unique()
+	joint_in = annots_all
+	    .combine(ld_all, by: 0)
+		.toSortedList()
+		.map{it -> [it]}
+		.combine(traits)
+	joint_annot_enrichment(joint_in)
+
+	plot_joint_enrichment(joint_annot_enrichment.out.main
+						  .collect())
+
+}
+
+process make_annot_files {
+	/*Use ldsc helper script to make annot files that ldsc understands from annotation bed files. 
+	 Use 1000g phase 3 plink bim files here */
+
+	storeDir LD_SCORE_DIR
+	// publishDir LD_SCORE_DIR, mode: "rellink"
+	memory '4GB'
+	errorStrategy "finish"
+	time '2h'
+	conda params.ldsc_environment
+	tag "${annot}.annot.${chrom}"
+	
+	input:
+	tuple val(annot), path(bed), val(chrom), path(bim)
+
+	output:
+	tuple val(chrom), val(annot), path("${annot}.annot.${chrom}.ld.annot.gz"), emit: main 
+	tuple val(annot), path("${annot}.annot.${chrom}.ld.annot.gz"), emit: ldannot
+	val(annot), emit: forjoint
+	
+	"""
+	make_annot.py --bed-file $bed --bimfile $bim --annot-file ${annot}.annot.${chrom}.ld.annot.gz
+	"""
+	
+}
+
+process calculate_LD_scores {
+	/* Calculate Ld scores for new annotations. Use 1000g plink files.
+	Since annotations will be added to baseline model, 
+	 use SNPs in baseline model in the --print-snps flag */
+
+	// publishDir LD_SCORE_DIR, mode: "rellink"
+	storeDir LD_SCORE_DIR
+	memory { 2.GB * task.attempt }
+	errorStrategy "retry"
+	time '2h'
+	conda params.ldsc_environment
+	tag "${annot}.annot.${chrom}"
+	beforeScript "export MKL_NUM_THREADS=1 && export NUMEXPR_NUM_THREADS=1 && export OPENBLAS_NUM_THREADS=1 && export OMP_NUM_THREADS=1"
+	
+	input:
+	tuple val(chrom), val(annot), path(annotfile), path(plinkfiles), path(hapmap)
+
+	output:
+	tuple val(annot), path("${annot}.annot.${chrom}.ld.l2.*"), emit: main
+	path("${annot}.annot.${chrom}.ld.l2.*"), emit: ldscores_all
+	val(annot), emit: forjoint
+	
+	script:
+	bfile = "${file(params.plink_1kg).name}.${chrom}"
+
+	"""
+	ldsc.py	 --l2 \
+		--maf ${params.maf} \
+		--bfile $bfile \
+		--ld-wind-cm ${params.ld_window_cm} \
+		--annot $annotfile \
+		--thin-annot \
+		--out ${annot}.annot.${chrom}.ld \
+		--print-snps ${hapmap}
+	"""
+
+}
+
+
+process single_annot_enrichment {
+	/* Run LDSC annotation enrichment on own custom annotations */
+
+	publishDir "${params.results}/annotation_enrichment", mode: "rellink"
+	memory '8G'
+	time '2h'
+	conda params.ldsc_environment
+	tag "${traitname}.annot.${annot}"
+	beforeScript "export MKL_NUM_THREADS=1 && export NUMEXPR_NUM_THREADS=1 && export OPENBLAS_NUM_THREADS=1 && export OMP_NUM_THREADS=1"
+	
+	input:
+	tuple val(annot), path(ld_scores), path(annotfiles), val(traitname), path(sumstats)
+
+	output:
+	path("${traitname}.annot.${annot}.results"), emit: main
+	path("${traitname}.annot.${annot}.log")
+	
+	script:
+	annot_str = "${annot}.annot.@.ld"
+	baseline_str = ( params.baseline != "" ) ? ",${params.baseline}" : ""
+
+	"""
+	ldsc.py --h2 $sumstats \
+		--ref-ld-chr  ${annot_str}${baseline_str} \
+		--w-ld-chr ${params.w_ld_chr} \
+		--overlap-annot \
+		--frqfile-chr ${params.frqfile_chr} \
+		--print-coefficients \
+		--out ${traitname}.annot.${annot}
+	"""
+
+}
+
+process joint_annot_enrichment {
+	/* Run LDSC annotation enrichment on own custom annotations */
+
+	publishDir "${params.results}/joint_annotation_enrichment", mode: "rellink"
+	memory '8G'
+	time '2h'
+	conda params.ldsc_environment
+	tag "${traitname}.joint"
+	beforeScript "export MKL_NUM_THREADS=1 && export NUMEXPR_NUM_THREADS=1 && export OPENBLAS_NUM_THREADS=1 && export OMP_NUM_THREADS=1"
+	
+	input:
+	tuple val(annotnames), val(traitname), path(sumstats)
+
+	output:
+	path("${traitname}.joint.results"), emit: main
+	path("${traitname}.joint.log")
+	
+	script:
+	annot_str = annotnames.join(".annot.@.ld,${LD_DIR}/")
+	annot_str = "${LD_DIR}/${annot_str}.annot.@.ld"
+	baseline_str = ( params.baseline != "" ) ? ",${params.baseline}" : ""
+
+	"""
+	ln -s ../../../${LD_SCORE_DIR} .
+	ldsc.py --h2 $sumstats \
+		--ref-ld-chr  ${annot_str}${baseline_str} \
+		--w-ld-chr ${params.w_ld_chr} \
+		--overlap-annot \
+		--frqfile-chr ${params.frqfile_chr} \
+		--print-coefficients \
+		--out ${traitname}.joint
+	"""
+
+}
+
+process plot_joint_enrichment {
+	/* plot joint annotation enrichment */
+	publishDir "${params.results}/joint_enrichment_plots", mode: "rellink"
+	memory '8GB'
+	errorStrategy "finish"
+	time '4h'
+	tag "plot"
+	
+	input:
+	path(results)
+
+	output:
+	path("joint_enrichment.tsv")
+	path("fig*")
+	
+	"""		
+	heatmap.py --joint $results 
+	"""
+}
+
+workflow.onComplete {
+	if (workflow.success){
+		subject = "LDSC execution complete"
+	}
+	else {
+		subject = "LDSC execution error"
+	}
+
+	recipient = params.email
+
+	['mail', '-s', subject, recipient].execute() << """
+
+	Pipeline execution summary
+	---------------------------
+	Completed at: ${workflow.complete}
+	Duration	: ${workflow.duration}
+	Success		: ${workflow.success}
+	workDir		: ${workflow.workDir}
+	exit status : ${workflow.exitStatus}
+	Error report: ${workflow.errorReport ?: '-'}
+	"""
+}

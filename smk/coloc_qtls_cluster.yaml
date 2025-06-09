@@ -1,0 +1,23 @@
+__default__:
+  account: "scjp1"
+  mem: "4G"
+  ntasks: "1"
+  cpus: "1"
+  name: "JOBNAME.{rule}.{wildcards}"
+  output: "../run_snakemake/logs/smk.coloc_qtls.{rule}/{wildcards}.out"
+  time: "48:00:00"
+
+correct_bed:
+   mem: "4G"
+   
+runsusie:
+   mem: "32G"
+
+coloc:
+   mem: "16G"
+
+tidy_coloc:
+   mem: "32G"
+
+coloc_regression:
+   mem: "64G"

@@ -1,0 +1,24 @@
+traits:
+ - ukbb_creatinine__ukbb_creatinine
+ - nielsen_atrial-fibrillation
+ - MAGIC_FI-EUR
+ - MAGIC2023_ISIadjbmi
+ - MAGIC2023_IFCadjbmi
+
+filter_window: 100000
+
+PPH4_threshold: 0.5
+
+celltypes:
+  - Type_1
+  - Type_2x
+  - Type_2a
+  - Endothelial
+  - Mesenchymal_Stem_Cell
+
+regions:
+  - nfr
+  - nuc
+
+indir_qtl: "../../results/results_05132024/"
+outdir_coloc: "../../results/results_08152024/coloc_gwas_arushi/"

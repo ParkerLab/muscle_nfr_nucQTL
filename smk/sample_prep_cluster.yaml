@@ -1,0 +1,58 @@
+__default__:
+  account: "scjp1"
+  mem: "1G"
+  ntasks: "1"
+  cpus: "1"
+  name: "JOBNAME.{rule}.{wildcards}"
+  output: "../run_snakemake/logs/smk.sample_prep.{rule}/{wildcards}.out"
+  time: "48:00:00"
+
+thresholding:
+   mem: "2G"
+
+split_bam:
+   mem: "2G"
+
+merge_bams:
+   mem: "32G"
+
+sort_bam_nfr:
+   cpus: "20"
+   mem: "9G"
+   time: "96:00:00"
+
+sort_bam_nuc:
+   cpus: "20"
+   mem: "9G"
+   time: "96:00:00"
+
+bam_to_bedpe:
+   mem: "32G"
+
+bamCoverage:
+   cpus: "9"
+   mem: "4G"
+
+bamCoverage_full:
+   cpus: "9"
+   mem: "4G"
+
+get_chr22_median:
+   mem: "4G"
+
+bw_subtraction:
+   cpus: "9"
+   mem: "4G"
+
+bw_subtraction_bdg:
+   cpus: "9"
+   mem: "4G"
+
+sample_diff_bw:
+   mem: "8G"
+
+sample_nuc_bw_smooth:
+   mem: "8G"
+
+smooth_bdg_sort_to_bw:
+   mem: "8G"

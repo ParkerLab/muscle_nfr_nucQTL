@@ -1,0 +1,21 @@
+__default__:
+  account: "scjp1"
+  mem: "4G"
+  ntasks: "1"
+  cpus: "1"
+  name: "JOBNAME.{rule}.{wildcards}"
+  output: "../run_snakemake/logs/coloc_gripstrength.{rule}/{wildcards}.out"
+  time: "24:00:00"
+
+
+runsusie:
+   mem: "96G"
+
+coloc:
+   mem: "4G"
+
+coloc_summary:
+   mem: "16G"
+
+coloc_inpeak:
+   mem: "64G"

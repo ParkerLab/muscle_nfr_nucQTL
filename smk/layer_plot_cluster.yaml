@@ -1,0 +1,16 @@
+__default__:
+  account: "scjp1"
+  mem: "4G"
+  ntasks: "1"
+  cpus: "1"
+  name: "JOBNAME.{rule}.{wildcards}"
+  output: "../run_snakemake/logs/smk.layer_plot.{rule}/{wildcards}.out"
+  time: "48:00:00"
+
+motif:
+   cpus: "1"
+   mem: "64G"
+
+layer_plot:
+    cpus: "1"
+    mem: "64G"

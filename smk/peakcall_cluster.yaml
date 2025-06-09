@@ -1,0 +1,47 @@
+__default__:
+  account: "scjp99"
+  mem: "1G"
+  ntasks: "1"
+  cpus: "1"
+  name: "JOBNAME.{rule}.{wildcards}"
+  output: "../run_snakemake/logs/smk.peakcall.{rule}/{wildcards}.out"
+  time: "48:00:00"
+
+bamtobed:
+  mem: "32G"
+
+macs2:
+  mem: "32G"
+
+macs2_narrow:
+  mem: "32G"
+
+macs2_bw:
+  mem: "32G"
+
+macs2_nfr:
+  mem: "120G"
+
+macs2_nfr_ext:
+  mem: "140G"
+
+macs3_nuc:
+  mem: "32G"
+
+macs2_nuc:
+  mem: "120G"
+
+macs2_nuc_bdg:
+  mem: "32G"
+  
+nucleoatac:
+  mem: "2G"
+  cpus: "10"
+
+nucleoatac_chr:
+  mem: "2G"
+  cpus: "10"
+
+nucleoatac_nfr_chr:
+  mem: "2G"
+  cpus: "10"

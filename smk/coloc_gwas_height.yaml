@@ -1,0 +1,52 @@
+IDS: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22] # the list of desired ids
+#IDS: [16]
+#IDS:
+min_corr: 0.1
+
+num_L: 10
+
+max_it: 10000
+
+#GWAS_annotations:
+#  - diamante_T2D-European
+
+VCF_path: "../../data/ukbb_hg38/"
+
+outdir_susie: "../../results/results_03152025"
+
+#outdir_coloc: "../../results/results_08092023/" - new round for new susieqtl data
+#outdir_coloc: "../../results/results_10182023/"
+#outdir_coloc: "../../results/results_05152024/"
+
+outdir_coloc: "../../results/results_03312025/"
+
+indir_gwas: "../../results/results_03152025/"
+
+
+#indir_qtl: "../../results/results_06262023/" - new round for new susieqtl data
+#indir_qtl: "../../results/results_10172023/"
+indir_qtl: "../../results/results_05132024/"
+
+#outdir_plot: "../../results/results_08142023/" - new round for new susieqtl data
+#outdir_plot: "../../results/results_05172024/"
+#outdir_plot: "../../results/results_05222024/" # fixed bugs
+outdir_plot: "../../results/results_03282025/"
+nominal_path: '../../results/results_05102024/QTL_opt_results/'
+
+filter_window: 100000
+
+
+PPH4_threshold: 0.5
+
+celltypes:
+  - Type_1
+  - Type_2x
+  - Type_2a
+  - Endothelial
+  - Mesenchymal_Stem_Cell
+
+regions:
+  - nfr
+#  - nuc
+
+IDS: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22] # the list of desired ids

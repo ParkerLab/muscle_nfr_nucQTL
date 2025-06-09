@@ -1,0 +1,10 @@
+gwas_df: '../../results/results_03312025/GWAS_ukbb_creatinine_coloc_summary/nfrqtls_ukbb_creatinine_gwas_coloc.tsv'
+inpeak_df: '../../results/results_04082025/'
+motif_dir: '../../results/results_05042025/'
+layer_plot_dir: '../../results/results_05152025/layer_plot/'
+
+gwas_traits:
+ - grip_strength
+ - t2d
+ - atrial_fibrillation
+ - fasting_insulin

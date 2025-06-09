@@ -1,0 +1,11 @@
+__default__:
+  account: "scjp1"
+  mem: "1G"
+  ntasks: "1"
+  cpus: "1"
+  name: "JOBNAME.{rule}.{wildcards}"
+  output: "../run_snakemake/logs/smk.cit.{rule}/smk.caqtl.{rule}.{wildcards}.out"
+  time: "24:00:00"
+
+cit_fdr:
+   mem: "64G"

@@ -1,0 +1,36 @@
+__default__:
+  account: "scjp1"
+  mem: "1G"
+  ntasks: "1"
+  cpus: "1"
+  name: "JOBNAME.{rule}.{wildcards}"
+  output: "../run_snakemake/logs/smk.QTLprep.{rule}/{wildcards}.out"
+  time: "48:00:00"
+
+countmatrix:
+  mem: "1G"
+  cpus: "16"
+
+tidy_rawcounts:
+  mem: "4G"
+
+tidy_rawscore:
+  mem: "32G"
+
+feature_summary:
+  mem: "4G"
+
+feature_selection:
+   mem: "32G"
+
+feature_selection_full:
+   mem: "32G"
+
+normalization:
+   mem: "32G"
+
+counts_to_bed:
+   mem: "4G"
+
+countmatrix_bw:
+   mem: "4G"

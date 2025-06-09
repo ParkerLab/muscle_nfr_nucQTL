@@ -1,0 +1,36 @@
+__default__:
+  account: "scjp1"
+  mem: "1G"
+  ntasks: "1"
+  cpus: "1"
+  name: "JOBNAME.{rule}.{wildcards}"
+  output: "../run_snakemake/logs/smk.QTLscan.{rule}/{wildcards}.out"
+  time: "24:00:00"
+
+
+get_covariates:
+   mem: "4G"
+
+
+QTL_scan_nocov:
+   time: "48:00:00"
+   mem: "16G"
+
+QTL_scan_cov:
+   time: "48:00:00"
+   mem: "16G"
+
+tidy_QTLresults:
+   mems: "4G"
+
+
+calc_qvalue:
+   mems: "1G"
+
+nominal_pass:
+   time: "48:00:00"
+   mem: "32G"
+
+nominal_pass_full:
+   time: "48:00:00"
+   mem: "32G"
