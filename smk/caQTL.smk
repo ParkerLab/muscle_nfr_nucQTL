@@ -5,6 +5,9 @@ extensions=config["extensions"]
 fpc_nums=config["fpc_num"]
 gpc_nums=config["gpc_num"]
 ids=config["IDS"]
+bam_root=config["bam_root"]
+qtltools_container=config["qtltools_container"]
+corrected_bed_dir=config["corrected_bed_dir"]
 
 rule all:
     input:
@@ -28,7 +31,7 @@ rule all:
         #         celltype=celltypes),
         expand("../../results/results_06032025/QTL_opt_results/{celltype}_ca/nominal_chr1.txt",
                 celltype=celltypes),
-        #expand("/scratch/scjp_root/scjp1/xiaoouw/Muscle_snATAC_nucQTL/results/results_06032025/corrected_bed/{celltype}_ca_corrected.bed.gz",
+        #expand("../../results/results_06032025/corrected_bed/{celltype}_ca_corrected.bed.gz",
         #        celltype=celltypes),
         expand("../../results/results_06032025/{celltype}_ca_susie/chr{id}/chr{id}_susie_cset95_summary.tsv",
                 celltype=celltypes, id=ids)
@@ -77,7 +80,7 @@ rule countmatrix:
         "atac"
     shell:
         """
-        path=/home/xiaoouw/Muscle_snATAC_nucQTL/data/bams-by-cluster-sample/{params.celltype}
+        path={bam_root}/{params.celltype}
         featureCounts \
             -F SAF \
             -O \
@@ -156,7 +159,7 @@ rule normalization:
             --counts_norm {output} \
             --outdirQC ../../results/results_08302024/QC/{params.celltype}_ca_{params.ext}/ \
             --outdirBED ../../results/results_08302024/bed_peaks_filtered_{params.ext}/ \
-            --sample_info_file ../../data/sample_info/sample_level_covariates_atac.tsv \
+            --sample_info_file {config["sample_info_file"]} \
             --celltype {params.celltype} \
             --region ca
         """
@@ -183,7 +186,7 @@ rule get_covariates:
         vcf_eigenvec=config["vcf_eigenvec"],
         celltype="{celltype}",
         figdir="../../results/results_08312024/heatmaps_covariates_{ext}ext/",
-        sample_info="../../data/sample_info/{celltype}_sample_level_covariates_atac.tsv",
+        sample_info=lambda wildcards: config["sample_info_template"].format(celltype=wildcards.celltype),
         region='ca',
     output:
         "../../results/results_08312024/covariates_{ext}ext/qtl_cov_simple_{celltype}_ca_FPC{fpc}_GPC{gpc}.txt"
@@ -215,7 +218,7 @@ rule preparebed:
 
 rule QTL_scan_nocov:
     input:
-        vcf="fusion.filtered-vcf.maf0.05-hwe1e6.vcf.gz",
+        vcf=config["vcf_file"],
         bed="{celltype}_ca_{ext}_normalized.bed.gz",
         cov="../../results/results_08312024/covariates_{ext}ext/qtl_cov_simple_{celltype}_ca_FPC{fpc}_GPC{gpc}.txt",
     params:
@@ -293,7 +296,7 @@ rule select_fpc:
 rule nominal_pass:
     input:
         summary="../../results/results_08312024/QTL_summary/{celltype}_opt_fpc.csv",
-        vcf="../../data/sample_info/fusion.filtered-vcf.maf0.05-hwe1e6.vcf.gz",
+        vcf=config["vcf_file"],
         bed="{celltype}_ca_75_normalized.bed.gz",
     output:
         "../../results/results_06032025/QTL_opt_results/{celltype}_{region}/nominal_chr1.txt"
@@ -302,12 +305,12 @@ rule nominal_pass:
         region="ca",
         nocov_dir="../../results/results_08312024/QTLscan_nocov_permutation_75ext/{celltype}",
         cov="../../results/results_08312024/covariates_75ext/qtl_cov_simple_{celltype}_ca_",
-        outdir="/scratch/scjp_root/scjp1/xiaoouw/Muscle_snATAC_nucQTL/results/results_06032025/QTL_opt_results/{celltype}_ca/",
+        outdir="../../results/results_06032025/QTL_opt_results/{celltype}_ca/",
         window_size='500000',
         localcov="{celltype}_ca_simple_cov.txt",
         heatmap_dir="../../results/results_08312024/heatmaps_covariates_75ext",
         local_bed="{celltype}_ca_75_normalized.bed",
-        vcf="fusion.filtered-vcf.maf0.05-hwe1e6.vcf.gz"
+        vcf=config["vcf_file"]
     envmodules:
         "singularity",
     shell:
@@ -325,7 +328,7 @@ rule nominal_pass:
 
         for i in 1
         do
-            singularity exec /gpfs/accounts/scjp_root/scjp99/arushiv/muscle-sn/data/containers/qtl/qtl.sif QTLtools cis \
+            singularity exec {qtltools_container} QTLtools cis \
                     --vcf {params.vcf} \
                     --bed {params.local_bed}.gz \
                     --cov {params.localcov} \
@@ -349,11 +352,11 @@ rule correct_bed:
    envmodules:
          "singularity",
    output:
-       "/scratch/scjp_root/scjp1/xiaoouw/Muscle_snATAC_nucQTL/results/results_06032025/corrected_bed/{celltype}_ca_corrected.bed.gz"
+       corrected_bed_dir + "/{celltype}_ca_corrected.bed.gz"
    shell:
        """
        scp {input.cov} {params.localcov}
-       singularity exec /gpfs/accounts/scjp_root/scjp99/arushiv/muscle-sn/data/containers/qtl/qtl.sif QTLtools correct --bed {input.bed} \
+       singularity exec {qtltools_container} QTLtools correct --bed {input.bed} \
                         --cov {params.localcov}\
                         --normal \
                         --out {output}
@@ -390,7 +393,8 @@ rule runsusie:
             --min_corr {params.min_corr} \
             --num_L {params.num_L} \
             --outdir {params.outdir}{params.celltype}_{params.region}_susie/{params.chr}/ \
-            --nominal {params.nominal_pass_dir}{params.celltype}_{params.region}/nominal_{params.chr}.txt
+            --nominal {params.nominal_pass_dir}{params.celltype}_{params.region}/nominal_{params.chr}.txt \
+            --sample_info_file {config["sample_info_file"]} \
+            --vcf_file {config["vcf_file"]} \
+            --temp_vcf_dir {config["temp_vcf_dir"]}
         """
-
-

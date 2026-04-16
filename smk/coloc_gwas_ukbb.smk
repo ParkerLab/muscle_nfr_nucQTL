@@ -21,7 +21,7 @@ rule liftover:
     output:
         "../../results/results_09232024/gwas_ukbb/{trait}/{trait}_hg38.h.tsv"
     params:
-        vcf="../../data/sample_info/fusion.filtered-vcf.maf0.05-hwe1e6.vcf.gz",
+        vcf=config["vcf_file"],
     conda:
         "atac"
     shell:
@@ -61,7 +61,7 @@ rule runsusie:
     params:
         trait="{trait}",
         sample_size=lambda wildcards: config["sample_size"][wildcards.trait],
-        ukbb_path="../../data/ukbb_hg38/",
+        ukbb_path=config["ukbb_path"],
         gwas_file_path="../../results/results_09232024/gwas_ukbb/{trait}/{trait}_hg38.h.tsv",
         outdir="../../results/results_10072024/"
     conda:
@@ -76,5 +76,6 @@ rule runsusie:
             --gwas_file_path {params.gwas_file_path} \
             --sample_size {params.sample_size} \
             --ukbb_path {params.ukbb_path} \
-            --outdir {params.outdir}
+            --outdir {params.outdir} \
+            --temp_vcf_dir {config["temp_vcf_dir"]}
         """

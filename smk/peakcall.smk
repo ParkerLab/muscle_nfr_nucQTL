@@ -105,7 +105,7 @@ rule macs2_bw:
         "../../data/bams-by-cluster/{celltype}/atac-{celltype}-fusion.bed"
     params:
         celltype = "{celltype}",
-        sizes = "/scratch/scjp_root/scjp1/xiaoouw/Muscle_snATAC_nucQTL/data/hg38/hg38.chrom.sizes",
+        sizes = config["chrom_sizes"],
         bdg="../../results/results_10212024/macs2_100ext/{celltype}/atac_macs2_{celltype}_treat_pileup.bdg"
     output:
         "../../results/results_10212024/macs2_100ext/{celltype}/atac_macs2_{celltype}_treat_pileup.bw"
@@ -257,7 +257,7 @@ rule nucleoatac:
         """
         nucleoatac run --bed ../../results/results_11212023/macs2/{params.celltype}/atac_macs2_{params.celltype}_peaks.broadPeak \
                         --bam  ../../data/bams-by-cluster/{params.celltype}/atac-{params.celltype}-fusion.bam \
-                        --fasta ../../data/hg38/Homo_sapiens_assembly38_noALT_noHLA_noDecoy_ERCC.fasta \
+                        --fasta {config["hg38_fasta"]} \
                         --out ../../results/results_07092024/nucleoatac/{params.celltype}/{params.celltype} \
                         --cores 10
         """
@@ -329,7 +329,7 @@ rule nucleoatac_chr:
         samtools index {input}
         nucleoatac run --bed ../../results/results_11212023/macs2/{params.celltype}/atac_macs2_{params.celltype}_peaks.broadPeak \
                         --bam {input} \
-                        --fasta ../../data/hg38/Homo_sapiens_assembly38_noALT_noHLA_noDecoy_ERCC.fasta \
+                        --fasta {config["hg38_fasta"]} \
                         --out ../../results/results_07092024/nucleoatac_chr/{params.celltype}/{params.chr}/{params.celltype}_{params.chr} \
                         --cores 10
         """ 
@@ -349,7 +349,7 @@ rule nucleoatac_nfr_chr:
         """
         nucleoatac nfr --bed {input} \
                         --bam ../../data/bams-by-cluster/{params.celltype}/bychr/atac-{params.celltype}-fusion_{params.chr}_sorted.bam \
-                        --fasta ../../data/hg38/Homo_sapiens_assembly38_noALT_noHLA_noDecoy_ERCC.fasta \
+                        --fasta {config["hg38_fasta"]} \
                         --out ../../results/results_02212024/nucleoatac_chr_nfr/{params.celltype}/{params.chr}/{params.celltype}_{params.chr} \
                         --cores 10 \
                         --max_occ 0.2 \

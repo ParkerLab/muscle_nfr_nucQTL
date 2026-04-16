@@ -69,7 +69,8 @@ rule runsusie:
             --min_corr {params.min_corr} \
             --num_L {params.num_L} \
             --max_it {params.max_it} \
-            --outdir {params.outdir}
+            --outdir {params.outdir} \
+            --temp_vcf_dir {config["temp_vcf_dir"]}
         """
 
 
@@ -189,5 +190,4 @@ rule coloc_inpeak_bind:
         fi
         done
         """
-
 

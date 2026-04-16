@@ -1,0 +1,20 @@
+summary_file: "results/results_10282024/nfrnuccaQTL_coloc_summary.tsv"
+
+filters:
+  pph4_nfr_min: 0.8
+  pph4_nuc_min: 0.8
+  pph4_ca_np_max: 0.8
+
+plot:
+  celltype: "Type_2a"
+  gwas_trait: "grip_strength"
+  gwas_label: "grip_strength"
+  filter_window: 100000
+
+paths:
+  coloc_root: "results/results_10282024/GWAS_grip_strength_coloc"
+  nfr_susie_root: "results/results_05132024/Type_2a_nfr_susie"
+  nuc_susie_root: "results/results_07162024/Type_2a_nuc_susie"
+  ca_susie_root: "results/results_02262026/Type_2a_ca_susie"
+  gwas_susie_root: "results/results_10212024/grip_strength_susie_models"
+  output_root: "results/results_04012026/locuszoom_grip_strength_Type_2a"

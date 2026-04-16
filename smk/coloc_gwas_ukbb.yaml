@@ -15,6 +15,9 @@ traits:
 sample_size:
   "continuous-46-both_sexes-irnt" : "456348"
   "continuous-22404-both_sexes-irnt" : "525929"
+vcf_file: "../../data/sample_info/fusion.filtered-vcf.maf0.05-hwe1e6.vcf.gz"
+ukbb_path: "../../data/ukbb_hg38/"
+temp_vcf_dir: "../../data/sample_info/temp_vcfs"
 type:
   "46_irnt" : ""
 

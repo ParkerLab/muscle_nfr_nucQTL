@@ -15,3 +15,5 @@ gpc_num: [5]
 window_size: 10000
 
 vcf_eigenvec: "../../data/sample_info/fusion.filtered-vcf.maf0.05-hwe1e6_plink_pruned.eigenvec"
+vcf_file: "../../data/sample_info/fusion.filtered-vcf.maf0.05-hwe1e6.vcf.gz"
+sample_info_template: "../../data/sample_info/{celltype}_sample_level_covariates_atac.tsv"

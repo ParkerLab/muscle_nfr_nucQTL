@@ -1,0 +1,53 @@
+# Config for MR_split.smk with splitA=nfr and splitB=nuc
+raw_counts_nfr: "../../results/results_05082024/counts_file_filtered/Type_1_nfr_counts_filtered.txt"
+raw_counts_nuc: "../../results/results_07122024/counts_file_filtered/Type_1_nuc_counts_filtered.txt"
+
+sample_info: "../../data/sample_info/sample_level_covariates_atac.tsv"
+keep_peaks_file: "../../results/results_07172024/coloc_plots_Type_1/coloc_summary_Type_1_5000.tsv"
+
+# Peak columns in keep_peaks_file (used post-normalization)
+nfr_peak_col: "NFR_peak"
+nuc_peak_col: "Nucleosomal_peak"
+
+# Deterministic batch assignment
+subsetA_batches:
+  - "499-NM"
+  - "530-NM"
+  - "564-NM"
+  - "625-NM"
+  - "678-NM"
+exclude_donors:
+  - "donor1"
+  - "donor2"
+  - "donor3"
+
+celltype: "Type_1"
+outdir_root: "/home/xiaoouw/Muscle_snATAC_nucQTL/results/results_02172026/MR_split"
+
+# QTL nominal-pass inputs
+vcf_file: "../../data/sample_info/fusion.filtered-vcf.maf0.05-hwe1e6.vcf.gz"
+vcf_eigenvec: "../../data/sample_info/fusion.filtered-vcf.maf0.05-hwe1e6_plink_pruned.eigenvec"
+qtltools_container: "path/to/qtltools.sif"
+qtl_window_size: 500000
+qtl_gpc_num: 5
+sample_size_exposure: 140
+sample_size_outcome: 141
+steiger_pval_threshold: 5e-6
+rowwise_steiger_p_threshold: 0.05
+rowwise_steiger_q_threshold: 0.05
+
+# Optional overrides
+normalization_script: "bin/normalization.R"
+split_helper: "bin/split_counts.py"
+subset_norm_helper: "bin/subset_norm_by_peaks.R"
+counts_to_bed_script: "bin/counts_to_bed.py"
+get_covariates_script: "bin/get_covariates_MR.py"
+extract_nominal_hits_script: "bin/extract_coloc_nominal_hits.py"
+annotate_vcf_script: "bin/annotate_qtl_with_vcf.py"
+harmonize_mr_script: "bin/harmonize_qtl_for_mr.py"
+harmonize_twosamplemr_script: "bin/harmonize_twosamplemr.R"
+steiger_script: "bin/run_steiger_from_harmonized.R"
+
+prepare_rowwise_steiger_script: "bin/prepare_rowwise_steiger_inputs.py"
+run_rowwise_steiger_script: "bin/run_rowwise_steiger_directionality.R"
+plot_rowwise_steiger_script: "bin/plot_rowwise_steiger_directions.R"

@@ -22,7 +22,7 @@ def get_LD_file(lead_var_file):
         LD_files.append(LD_file)
     return(LD_files)
 
-LD_files = get_LD_file("../../data/GWAS/diamante_T2D-European_gwas_lead_variants_hg38_ext_regions.txt")
+LD_files = get_LD_file(config["lead_var_file"])
 
 rule all:
     input:
@@ -69,7 +69,8 @@ rule runsusie:
             --min_corr {params.min_corr} \
             --num_L {params.num_L} \
             --max_it {params.max_it} \
-            --outdir {params.outdir}
+            --outdir {params.outdir} \
+            --temp_vcf_dir {config["temp_vcf_dir"]}
         """
 
 rule plot:

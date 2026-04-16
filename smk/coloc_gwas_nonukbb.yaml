@@ -23,6 +23,8 @@ num_L: 10
 max_it: 10000
 
 VCF_path: "../../data/ukbb_hg38/"
+temp_vcf_dir: "../../data/sample_info/temp_vcfs"
+gwas_dir: "../../data/GWAS"
 
 outdir_susie: "../../results/results_01162025"
 
@@ -57,4 +59,3 @@ regions:
 IDS: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22] # the list of desired ids
 
 nominal_path: '../../results/results_05102024/QTL_opt_results/'
-

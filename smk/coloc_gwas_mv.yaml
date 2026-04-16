@@ -11,6 +11,7 @@ max_it: 10000
 #  - diamante_T2D-European
 
 VCF_path: "../../data/ukbb_hg38/"
+temp_vcf_dir: "../../data/sample_info/temp_vcfs"
 
 outdir_susie: "../../results/results_10282024"
 

@@ -1,0 +1,18 @@
+__default__:
+  account: "scjp1"
+  mem: "8G"
+  ntasks: "1"
+  cpus: "1"
+  name: "JOBNAME.{rule}.{wildcards}"
+  output: "../run_snakemake/logs/plot_multitrack.{rule}/{wildcards}.out"
+  time: "08:00:00"
+
+write_peak_list:
+  mem: "2G"
+  cpus: "1"
+  time: "00:30:00"
+
+plot_locuszoom:
+  mem: "8G"
+  cpus: "1"
+  time: "02:00:00"

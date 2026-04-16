@@ -61,6 +61,9 @@ rule cit:
         pair = "{cit_pair}",
         cov = config["cov_dir"],
         count_mat_dir=config["count_mat_dir"],
+        sample_info_file=config["sample_info_file"],
+        vcf_file=config["vcf_file"],
+        temp_vcf_dir=config["temp_vcf_dir"],
     conda:
         "R423"
     envmodules:
@@ -74,7 +77,10 @@ rule cit:
             --outdir {params.outdir} \
             --PPH4_threshold {params.PPH4_threshold} \
             --cov {params.cov} \
-            --count_mat_dir {params.count_mat_dir}
+            --count_mat_dir {params.count_mat_dir} \
+            --sample_info_file {params.sample_info_file} \
+            --vcf_file {params.vcf_file} \
+            --temp_vcf_dir {params.temp_vcf_dir}
         """
 
 rule cit_fdr:

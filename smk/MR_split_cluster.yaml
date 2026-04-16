@@ -1,0 +1,74 @@
+__default__:
+  account: "scjp99"
+  mem: "1G"
+  ntasks: "1"
+  cpus: "1"
+  name: "JOBNAME.{rule}.{wildcards}"
+  output: "../run_snakemake/logs/smk.MR_split.{rule}/smk.MR_split.{rule}.{wildcards}.out"
+  time: "24:00:00"
+
+split_counts_nfr_to_splitA:
+  mem: "16G"
+  cpus: "1"
+
+split_counts_nuc_to_splitB:
+  mem: "16G"
+  cpus: "1"
+
+normalize_splitA:
+  mem: "32G"
+  cpus: "1"
+
+normalize_splitB:
+  mem: "32G"
+  cpus: "1"
+
+subset_norm_splitA_peaks:
+  mem: "16G"
+  cpus: "1"
+
+subset_norm_splitB_peaks:
+  mem: "16G"
+  cpus: "1"
+
+counts_to_bed_splitA:
+  mem: "4G"
+  cpus: "1"
+
+counts_to_bed_splitB:
+  mem: "4G"
+  cpus: "1"
+
+preparebed_splitA:
+  mem: "1G"
+  cpus: "1"
+
+preparebed_splitB:
+  mem: "1G"
+  cpus: "1"
+
+nominal_pass_splitA:
+  time: "48:00:00"
+  mem: "32G"
+  cpus: "1"
+
+nominal_pass_splitB:
+  time: "48:00:00"
+  mem: "32G"
+  cpus: "1"
+
+extract_coloc_nominal_hits:
+  mem: "16G"
+  cpus: "1"
+
+steiger_directionality_rowwise:
+  mem: "16G"
+  cpus: "1"
+
+plot_rowwise_steiger_directionality:
+  mem: "4G"
+  cpus: "1"
+
+plot_rowwise_steiger_directionality_hit1:
+  mem: "4G"
+  cpus: "1"

@@ -13,6 +13,8 @@ GWAS_annotations:
 traits: [HMMRATAC, NucleoATAC]
 
 VCF_path: "../../data/ukbb_hg38/"
+temp_vcf_dir: "../../data/sample_info/temp_vcfs"
+lead_var_file: "../../data/GWAS/diamante_T2D-European_gwas_lead_variants_hg38_ext_regions.txt"
 
 outdir_susie: "../../results/results_07142023"
 

@@ -12,5 +12,7 @@ traits:
 sample_size:
   "myopathy" : "456348"
   "polymyositis" : "525929"
+ukbb_path: "../../data/ukbb_hg38/"
+temp_vcf_dir: "../../data/sample_info/temp_vcfs"
 
 filter_window: 100000

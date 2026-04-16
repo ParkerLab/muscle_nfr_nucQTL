@@ -43,7 +43,7 @@ rule get_covariates:
         celltype="{celltype}",
         region = "{region}",
         figdir="../../results/results_07152024/heatmaps_covariates/",
-        sample_info="../../data/sample_info/{celltype}_sample_level_covariates_atac.tsv"
+        sample_info=lambda wildcards: config["sample_info_template"].format(celltype=wildcards.celltype)
     output:
         "../../results/results_07152024/covariates/qtl_cov_full_{celltype}_{region}_FPC{fpc}_GPC{gpc}.txt"
     conda:
@@ -76,7 +76,7 @@ rule preparebed:
 
 rule QTL_scan_nocov:
     input:
-        vcf="fusion.filtered-vcf.maf0.05-hwe1e6.vcf.gz",
+        vcf=config["vcf_file"],
         bed="{celltype}_{region}_normalized.bed.gz",
         cov="../../results/results_07152024/covariates/qtl_cov_simple_{celltype}_{region}_FPC{fpc}_GPC{gpc}.txt",
     params:
@@ -111,7 +111,7 @@ rule QTL_scan_nocov:
 
 rule QTL_scan_cov:
     input:
-        vcf="fusion.filtered-vcf.maf0.05-hwe1e6.vcf.gz",
+        vcf=config["vcf_file"],
         bed="{celltype}_{region}_normalized.bed.gz",
         cov="../../results/results_07152024/covariates/qtl_cov_full_{celltype}_{region}_FPC{fpc}_GPC{gpc}.txt",
     params:
@@ -221,7 +221,7 @@ rule select_fpc:
 rule nominal_pass:
     input:
         summary="../../results/results_07152024/QTL_summary/{celltype}_opt_fpc.csv",
-        vcf="fusion.filtered-vcf.maf0.05-hwe1e6.vcf.gz",
+        vcf=config["vcf_file"],
         bed="{celltype}_{region}_normalized.bed.gz",
     output:
         "../../results/results_07162024/QTL_opt_results/{celltype}_{region}/nominal_chr22.txt"
@@ -268,7 +268,7 @@ rule nominal_pass:
 rule nominal_pass_full:
     input:
         summary="../../results/results_07152024/QTL_summary/{celltype}_opt_fpc.csv",
-        vcf="fusion.filtered-vcf.maf0.05-hwe1e6.vcf.gz",
+        vcf=config["vcf_file"],
         bed="{celltype}_{region}_full_normalized.bed.gz",
     output:
         "../../results/results_06112024/QTL_opt_results/{celltype}_{region}_byfull/nominal_chr22.txt"

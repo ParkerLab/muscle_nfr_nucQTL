@@ -1,0 +1,30 @@
+__default__:
+  account: "scjp99"
+  mem: "1G"
+  ntasks: "1"
+  cpus: "1"
+  name: "JOBNAME.{rule}.{wildcards}"
+  output: "../run_snakemake/logs/smk.cit.{rule}/smk.caqtl.{rule}.{wildcards}.out"
+  time: "24:00:00"
+
+downsample:
+   mem: "8G"
+   cpus: "1"
+
+countmatrix:
+  mem: "2G"
+  cpus: "16"
+
+tidy_rawcounts:
+  mem: "4G"
+
+feature_selection:
+   mem: "4G"
+
+normalization:
+   mem: "32G"
+
+cit:
+   mem: "8G"
+cit_fdr:
+   mem: "64G"

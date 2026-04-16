@@ -9,3 +9,5 @@ celltypes:
 
 #IDS: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22] # the list of desired ids
 IDS: [5] # the list of desired ids
+chrom_sizes: "../../data/hg38/hg38.chrom.sizes"
+hg38_fasta: "../../data/hg38/Homo_sapiens_assembly38_noALT_noHLA_noDecoy_ERCC.fasta"

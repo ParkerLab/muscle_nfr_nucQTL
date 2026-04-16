@@ -9,7 +9,7 @@ import pandas as pd
 def get_samples(sample_file):
     sample_df = pd.read_csv(sample_file, sep = '\t')
     # get ids
-    samples = sample_df['SNG.1ST']+'--'+sample_df['batch']
+    samples = sample_df['SAMPLE']+'--'+sample_df['batch']
     # get unique ids
     samples = list(samples.drop_duplicates())
     # remove '-NM'
