@@ -364,4 +364,3 @@ dependencies:
       - tqdm==4.66.4
       - upsetplot==0.8.0
       - vcfpy==0.13.8
-prefix: /home/xiaoouw/miniconda3/envs/atac
