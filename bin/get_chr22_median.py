@@ -21,7 +21,7 @@ celltype_sample_info = sample_info[sample_info['coarse_cluster_name'] == 'fusion
 
 # size df
 size_df = pd.DataFrame(data=filelist, columns = ['path'])
-size_df['SNG.1ST'] = [i.split('@fusion@')[1].split('--')[0] for i in size_df['path'].tolist()]
+size_df['SAMPLE'] = [i.split('@fusion@')[1].split('--')[0] for i in size_df['path'].tolist()]
 
 medians = []
 for i in size_df['path']:

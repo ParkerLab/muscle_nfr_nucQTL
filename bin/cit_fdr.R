@@ -39,20 +39,35 @@ hit1 = c()
 hit2 = c()
 nfr_peak = c()
 nuc_peak = c()
+is_bad = function(x) is.null(x) || (length(x) == 1 && is.na(x))
+k = 0
 for(i in 1:length(trait_results_nocov)){
     cit_result_file = paste0(cit_results_path, trait_results_nocov[i])
-    #print(cit_result_file)
+    print(cit_result_file)
     # load the results
     load(cit_result_file)
-    trait_H1_results[[i]] = results$H1
-    trait_H2_results[[i]] = results$H2
-    trait_H3_results[[i]] = results$H3
-    trait_H4_results[[i]] = results$H4
+    if (is_bad(results$H1) || is_bad(results$H2) || is_bad(results$H3) || is_bad(results$H4)) {
+        next
+    }
+    k = k + 1
+    trait_H1_results[[k]] = results$H1
+    trait_H2_results[[k]] = results$H2
+    trait_H3_results[[k]] = results$H3
+    trait_H4_results[[k]] = results$H4
     # get the pair info
     hit1 = c(hit1, strsplit(trait_results_nocov[i], split= "-")[[1]][2])
     hit2 = c(hit2, strsplit(trait_results_nocov[i], split= "-")[[1]][3])
     nfr_peak = c(nfr_peak, strsplit(trait_results_nocov[i], split= "-")[[1]][4])
     nuc_peak = c(nuc_peak, strsplit(trait_results_nocov[i], split= "-")[[1]][5])
+}
+# if everything was skipped, write empty outputs and exit
+if (length(trait_H1_results) == 0) {
+    empty_df = data.frame(hit1=character(), hit2=character(), nfr_peak=character(), nuc_peak=character())
+    write.table(empty_df, file=paste0(fdr_outdir, celltype, '_citfdr_cov_', PPH4_threshold, '_H1_summary.tsv'), sep='\t', quote=F, row.names=FALSE)
+    write.table(empty_df, file=paste0(fdr_outdir, celltype, '_citfdr_cov_', PPH4_threshold, '_H2_summary.tsv'), sep='\t', quote=F, row.names=FALSE)
+    write.table(empty_df, file=paste0(fdr_outdir, celltype, '_citfdr_cov_', PPH4_threshold, '_H3_summary.tsv'), sep='\t', quote=F, row.names=FALSE)
+    write.table(empty_df, file=paste0(fdr_outdir, celltype, '_citfdr_cov_', PPH4_threshold, '_H4_summary.tsv'), sep='\t', quote=F, row.names=FALSE)
+    quit(save="no")
 }
 # get the cit pair info
 pair_info_df = data.frame(hit1 = hit1, 

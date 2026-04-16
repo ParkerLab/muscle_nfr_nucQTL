@@ -12,7 +12,8 @@ option_list <- list(
     make_option(c("--outdir"), type = "character", help = "[Required] Cit permutations results saved location"),
     make_option(c("--PPH4_threshold"), type = "numeric", help = "[Required] Filtering threshold for PPh4 value"),
     make_option(c("--cov"), type = "character", help = "[Required] location of the technical + genoPC cov file location"),
-    make_option(c("--count_mat_dir"), type = "character", help = "[Required] location of the count/score matrix"),
+    make_option(c("--count_mat_dir_nuc"), type = "character", help = "[Required] location of the nuc count/score matrix"),
+    make_option(c("--count_mat_dir_nfr"), type = "character", help = "[Required] location of the nfr count/score matrix"),
     make_option(c("--sample_info_file"), type = "character", help = "[Required] sample metadata file"),
     make_option(c("--vcf_file"), type = "character", help = "[Required] source VCF used for tabix slices"),
     make_option(c("--temp_vcf_dir"), type = "character", help = "[Required] directory for temporary sliced VCFs")
@@ -101,8 +102,8 @@ L_2= dat_281 %>% select(hit2)
 nfr_peak_id = nfr_peak
 nuc_peak_id = nuc_peak
 ## count mat locations
-nfr_mat=paste0(opts$count_mat_dir, celltype, '_nfr_normalized.rds')
-nuc_mat=paste0(opts$count_mat_dir, celltype, '_nuc_normalized.rds')
+nfr_mat=paste0(opts$count_mat_dir_nfr, celltype, '_nfr_normalized.rds')
+nuc_mat=paste0(opts$count_mat_dir_nuc, celltype, '_nuc_normalized.rds')
 #HMMRATAC_nfr_mat = "../../data/normalized_counts/HMMRATAC_NFR_counts_multiotsu_normalized.rds"
 #HMMRATAC_nuc_mat = "../../data/normalized_counts/HMMRATAC_Nucleosomal_counts_multiotsu_normalized.rds"
 #NucleoATAC_nfr_mat = "../../data/normalized_counts/NuclaoATAC_NFR_counts_multiotsu_byreads_normalized.rds"
@@ -118,8 +119,22 @@ nuc_mat=paste0(opts$count_mat_dir, celltype, '_nuc_normalized.rds')
 nfr_count_mat = readRDS(nfr_mat)
 nuc_count_mat = readRDS(nuc_mat)
 # get data points
-nfr_col = nfr_count_mat %>% as.data.frame() %>% select(all_of(nfr_peak_id))
-nuc_col = nuc_count_mat %>% as.data.frame() %>% select(all_of(nuc_peak_id))
+nfr_df = nfr_count_mat %>% as.data.frame()
+nuc_df = nuc_count_mat %>% as.data.frame()
+if (nfr_peak_id %in% colnames(nfr_df)) {
+    nfr_col = nfr_df %>% select(all_of(nfr_peak_id))
+} else {
+    nfr_col = data.frame(tmp=rep(0, nrow(nfr_df)))
+    rownames(nfr_col) = rownames(nfr_df)
+    colnames(nfr_col) = nfr_peak_id
+}
+if (nuc_peak_id %in% colnames(nuc_df)) {
+    nuc_col = nuc_df %>% select(all_of(nuc_peak_id))
+} else {
+    nuc_col = data.frame(tmp=rep(0, nrow(nuc_df)))
+    rownames(nuc_col) = rownames(nuc_df)
+    colnames(nuc_col) = nuc_peak_id
+}
 # get sample id
 nfr_names = nfr_col %>% rownames()
 nfr_names = sapply(strsplit(nfr_names, "__"), function(x) x[[1]])
@@ -154,27 +169,37 @@ cit_df_1 = merge(L_1, peak_df, by.x = 0, by.y = "Sample")
 cit_df_2 = merge(L_2, peak_df, by.x = 0, by.y = "Sample")
 
 # --------------------Assemble 4 hypothesis-----------------------
+# helper to skip CIT if any input is invalid (NA or constant)
+run_cit_safe = function(L, G, T, C) {
+    if (any(is.na(L)) || any(is.na(G)) || any(is.na(T)) || any(is.na(C))) {
+        return(NA)
+    }
+    if (sd(L) == 0 || sd(G) == 0 || sd(T) == 0) {
+        return(NA)
+    }
+    return(cit.cp(L, G, T, C, n.perm=100))
+}
 # H1: hit1 -> nfr_peak -> nuc_peak
 L1 = cit_df_1 %>% select(hit1) %>% as.matrix()
 G1 = cit_df_1 %>% select("NFR_peak") %>% as.matrix()
 T1 = cit_df_1 %>% select("Nuc_peak") %>% as.matrix()
-h1_results=cit.cp(L1,G1,T1,C, n.perm=100)
+h1_results=run_cit_safe(L1,G1,T1,C)
 
 # H2: hit1 -> nuc_peak -> nfr_peak
 G2 = cit_df_1 %>% select("Nuc_peak") %>% as.matrix()
 T2 = cit_df_1 %>% select("NFR_peak") %>% as.matrix()
-h2_results=cit.cp(L1,G2,T2,C, n.perm=100)
+h2_results=run_cit_safe(L1,G2,T2,C)
 
 # H3: hit2 -> nfr_peak -> nuc_peak
 L2 = cit_df_2 %>% select(hit2) %>% as.matrix()
 G3 = cit_df_2 %>% select("NFR_peak") %>% as.matrix()
 T3 = cit_df_2 %>% select("Nuc_peak") %>% as.matrix()
-h3_results=cit.cp(L2,G3,T3,C, n.perm=100)
+h3_results=run_cit_safe(L2,G3,T3,C)
 
 # H4: hit2 -> nuc_peak -> nfr_peak
 G4 = cit_df_2 %>% select("Nuc_peak") %>% as.matrix()
 T4 = cit_df_2 %>% select("NFR_peak") %>% as.matrix()
-h4_results=cit.cp(L2,G4,T4,C, n.perm=100)
+h4_results=run_cit_safe(L2,G4,T4,C)
 
 # --------------------Save results-----------------------
 results = list()

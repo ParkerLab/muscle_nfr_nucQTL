@@ -10,6 +10,7 @@ option_list <- list(
     make_option(c("--gwas_file_path"), type = "character", help = "[Required] Building susie models for which GWAS signals"),
     make_option(c("--sample_size"), type = "numeric", help = "[Required] Sample size of the GWAS study"),
     make_option(c("--ukbb_path"), type = "character", help = "[Required] Using which VCF information, ukbb?"),
+    make_option(c("--temp_vcf_dir"), type = "character", help = "[Required] directory for temporary sliced VCFs"),
     make_option(c("--outdir"), type = "character", help = "[Required] Susie models output directory")
 )
 option_parser <- OptionParser(usage = "usage: Rscript %prog [options]", option_list = option_list, add_help_option = T)
@@ -20,6 +21,7 @@ lead_var = opts$GWAS_annot_leadvar
 total_n = opts$sample_size
 
 ukbb_path = opts$ukbb_path
+temp_vcf_dir = opts$temp_vcf_dir
 gwas_file_path = opts$gwas_file_path
 outdir = opts$outdir
 
@@ -65,12 +67,13 @@ for(i in 1:nrow(lead_var_df)){
     command = paste0("tabix -h ", ukbb_vcf_path, " ")
     command = paste0(command, LD_pos)
     # change the directory to "../../data" in smk!!!
-    command = paste0(command, " | bgzip > ../../data/sample_info/temp_vcfs/", LD_file, ".vcf.gz")
+    dir.create(temp_vcf_dir, recursive = TRUE, showWarnings = FALSE)
+    sub_vcf_path = file.path(temp_vcf_dir, paste0(LD_file, ".vcf.gz"))
+    command = paste0(command, " | bgzip > ", shQuote(sub_vcf_path))
     print(command)
     system(command, intern=TRUE)
     print("Done with running tabix")
     # get the genotype inforamtion from sub vcfs
-    sub_vcf_path = paste0("../../data/sample_info/temp_vcfs/", LD_file, ".vcf.gz")
     # read vcf
     vcf = read.vcfR(sub_vcf_path)
     print("Done with reading vcf")

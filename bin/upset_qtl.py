@@ -67,11 +67,7 @@ df_combinations = pd.DataFrame(data)
 index = pd.MultiIndex.from_frame(df_combinations)
 series = pd.Series(counts, index=index)
 # plot
-font_path = '/home/xiaoouw/font/Arial.ttf'
-font_manager.fontManager.addfont(font_path)
-prop = font_manager.FontProperties(fname=font_path)
-
-plt.rcParams['font.family'] = 'Arial'
+plt.rcParams['font.family'] = 'DejaVu Sans'
 
 fig = plt.gcf()  # Get the current figure
 fig.set_size_inches(2, 3)

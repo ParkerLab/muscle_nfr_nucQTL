@@ -16,7 +16,10 @@ option_list <- list(
     make_option(c("--nominal"), type = "character", help = "[Required] directory of nominal pass qtl results"),
     make_option(c("--min_corr"), type = "numeric", help = "[Required] min abs corr between any snp pairs"),
     make_option(c("--num_L"), type = "numeric", help = "[Required] Max number of LD vars"),
-    make_option(c("--outdir"), type = "character", help = "[Required] output directory")
+    make_option(c("--outdir"), type = "character", help = "[Required] output directory"),
+    make_option(c("--sample_info_file"), type = "character", help = "[Required] sample metadata file"),
+    make_option(c("--vcf_file"), type = "character", help = "[Required] source VCF used for tabix slices"),
+    make_option(c("--temp_vcf_dir"), type = "character", help = "[Required] directory for temporary sliced VCFs")
 )
 option_parser <- OptionParser(usage = "usage: Rscript %prog [options]", option_list = option_list, add_help_option = T)
 opts = parse_args(option_parser)
@@ -24,11 +27,11 @@ opts = parse_args(option_parser)
 # -----------until functions-----------
 
 options(scipen = 100, digits = 4)
-format_LD <- function(filename) {
+format_LD <- function(filename, sample_info_file) {
     # tidy the sample list
     # samples to keep
     # only keep 281 samples - FUSION
-    sample_info =  read.csv("../../data/sample_info/sample_level_covariates_atac_with_frag.tsv", sep = "\t")
+    sample_info =  read.csv(sample_info_file, sep = "\t")
     sample_info <- sample_info %>% filter(coarse_cluster_name == 'fusion.Type_1')
     # current list of samples - 284
     sample_list <- sample_info$SAMPLE
@@ -69,6 +72,9 @@ bed = opts$bed
 qtl = opts$qtl
 # nominal pass result
 nominal = opts$nominal
+sample_info_file = opts$sample_info_file
+vcf_file = opts$vcf_file
+temp_vcf_dir = opts$temp_vcf_dir
 
 # -----------process inputs-----------
 # check and read
@@ -130,13 +136,14 @@ if (nrow(NFR_sigQTLs_chr) != 0){
     LD_end = coloc_df1 %>% slice_max(position) %>% select(position) %>% unique() %>% as.numeric()
     LD_pos = paste0(LD_chr, ":", LD_start-1, "-", LD_end+1)
     LD_file = paste0(LD_chr, "-", LD_start-1, "-", LD_end+1)
-    command = "tabix -h ../../data/sample_info/fusion.filtered-vcf.maf0.05-hwe1e6.vcf.gz "
-    command = paste0(command, LD_pos)
-    command = paste0(command, " | bgzip > ../../data/sample_info/temp_vcfs/", LD_file, ".vcf.gz")
+    dir.create(temp_vcf_dir, recursive = TRUE, showWarnings = FALSE)
+    temp_vcf_file = file.path(temp_vcf_dir, paste0(LD_file, ".vcf.gz"))
+    command = paste0("tabix -h ", shQuote(vcf_file), " ", shQuote(LD_pos),
+                     " | bgzip > ", shQuote(temp_vcf_file))
     print(command)
     system(command, intern=TRUE)
     # get the sample by var genotype info dat
-    LD_dat = format_LD(paste0("../../data/sample_info/temp_vcfs/", LD_file, ".vcf.gz"))
+    LD_dat = format_LD(temp_vcf_file, sample_info_file)
     # filter to keep the same snps at the QTL merge df
     LD_dat = LD_dat[, which((names(LD_dat) %in% coloc_df1$snp)==TRUE)]
     # calculate cor

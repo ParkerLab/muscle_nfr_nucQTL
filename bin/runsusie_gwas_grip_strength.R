@@ -14,6 +14,7 @@ option_list <- list(
     make_option(c("--gwas_file_path"), type = "character", help = "[Required] Building susie models for which GWAS signals"),
     make_option(c("--LD_file"), type = "character", help = "[Required] Lead variant output filename"),
     make_option(c("--ukbb_path"), type = "character", help = "[Required] Using which VCF information, ukbb?"),
+    make_option(c("--temp_vcf_dir"), type = "character", help = "[Required] directory for temporary sliced VCFs"),
     make_option(c("--min_corr"), type = "numeric", help = "[Required] min abs corr between any snp pairs"),
     make_option(c("--num_L"), type = "numeric", help = "[Required] Max number of LD vars"),
     make_option(c("--max_it"), type = "numeric", help = "[Required] Max number of susie iterations"),
@@ -26,6 +27,7 @@ opts = parse_args(option_parser)
 GWAS_annot = opts$GWAS_annot
 LD_file = opts$LD_file
 ukbb_path = opts$ukbb_path
+temp_vcf_dir = opts$temp_vcf_dir
 gwas_file_path = opts$gwas_file_path
 num_L = opts$num_L
 min_corr = opts$min_corr
@@ -61,13 +63,14 @@ LD_pos = paste0(LD_chr, ":", LD_start, "-", LD_end)
 command = paste0("tabix -h ", ukbb_vcf_path, " ")
 command = paste0(command, LD_pos)
 # change the directory to "../../data" in smk!!!
-command = paste0(command, " | bgzip > ../../data/sample_info/temp_vcfs/", LD_file, ".vcf.gz")
+    dir.create(temp_vcf_dir, recursive = TRUE, showWarnings = FALSE)
+    sub_vcf_path = file.path(temp_vcf_dir, paste0(LD_file, ".vcf.gz"))
+    command = paste0(command, " | bgzip > ", shQuote(sub_vcf_path))
 print(command)
 system(command, intern=TRUE)
 print("Done with running tabix")
 # get the genotype inforamtion from sub vcfs
-sub_vcf_path = paste0("../../data/sample_info/temp_vcfs/", LD_file, ".vcf.gz")
-# read vcf
+    # read vcf
 vcf = read.vcfR(sub_vcf_path)
 print("Done with reading vcf")
 # get id pos and allele info

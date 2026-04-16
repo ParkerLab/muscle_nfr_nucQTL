@@ -30,7 +30,7 @@ opts <- parse_args(option_parser)
 # read in parameters
 # test opts
 #opts$counts = "../../results/results_02062024/counts_file_filtered/Type_2a_nfr_counts_filtered.txt"
-#opts$sample_info_file = "<sample_info_file.tsv>"
+#opts$sample_info_file = "../../data/sample_info/sample_level_covariates_atac.tsv"
 #opts$outdir = "../../results/results_test/"
 #opts$counts_norm = "../../results/results_test/Type_2a_nfr_counts_nomalized.rds"
 
@@ -46,10 +46,34 @@ sampleDF = read.table(sample_info_file, sep='\t', header = TRUE)
 # filter and match for the samplDF
 sampleDF <- sampleDF[c('modality', 'batch', 'SAMPLE')]
 sampleDF <- sampleDF[!duplicated(sampleDF),]
+
+# featureCounts column names can include long sanitized BAM paths.
+# Map each count column to a sample ID from sampleDF by substring matching.
+sample_ids <- as.character(sampleDF$SAMPLE)
+raw_count_cols <- colnames(countMat)[-1]
+
+map_col_to_sample <- function(colname, ids) {
+  hits <- ids[vapply(ids, function(id) grepl(id, colname, fixed = TRUE), logical(1))]
+  if (length(hits) == 1) {
+    return(hits[1])
+  }
+  if (length(hits) > 1) {
+    # Prefer the longest match to avoid accidental short-ID matches.
+    return(hits[which.max(nchar(hits))])
+  }
+  # Fallback to legacy naming if present.
+  parts <- strsplit(colname, "__", fixed = TRUE)[[1]]
+  if (length(parts) > 0 && nzchar(parts[1])) {
+    return(parts[1])
+  }
+  return(colname)
+}
+
+mapped_ids <- vapply(raw_count_cols, map_col_to_sample, ids = sample_ids, FUN.VALUE = character(1))
+
 # order sample
-order <- vapply(strsplit(colnames(countMat), "__"), '[', 1, FUN.VALUE = character(1))
-order <- order[-1]
-# remove unqualified samples - deindentified samples
+order <- mapped_ids
+# remove unqualified samples
 order <- order[order != "donor1"]
 order <- order[order != "donor2"]
 order <- order[order != "donor3"]
@@ -69,8 +93,7 @@ formatPeakName = function(x) {
 countMat_tidy <- countMat[,-1]
 rownames(countMat_tidy) <- countMat[,1]
 ## colnames
-correct_names <- lapply(colnames(countMat_tidy), function(x) strsplit(x, split='__')[[1]][1])
-colnames(countMat_tidy) <- correct_names
+colnames(countMat_tidy) <- mapped_ids
 # run the peakformating function
 peakList =  lapply(rownames(countMat_tidy), formatPeakName)
 peakDF = do.call(rbind, peakList)
